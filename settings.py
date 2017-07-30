@@ -1,0 +1,4 @@
+import os
+
+PANOPTES_USERNAME = os.environ.get("PANOPTES_USERNAME")
+PANOPTES_PASSWORD = os.environ.get("PANOPTES_PASSWORD")
