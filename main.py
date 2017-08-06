@@ -8,8 +8,6 @@ Panoptes.connect(username=PANOPTES_USERNAME, password=PANOPTES_PASSWORD)
 
 project = Project.find(slug=PROJECT_SLUG)
 
-# print(vars(project))
-
 ## Workflow sequence
 
 # <Workflow 3548> Railroads_Mark_Image_Type
@@ -29,16 +27,22 @@ project = Project.find(slug=PROJECT_SLUG)
 # N/A
 # <Workflow 4408> Railroad_Transcribe_Station_State
 
-# for workflow in project.links.workflows:
-#     print(workflow, workflow.display_name)
-
+# TODO: use abc library
 class AbstractProcessSubjectSet:
+
+  # TODO: _workflowVersionId
+  _requiredSubClassInstanceAttrs = ['_workflowId', '_subjectSetId']
+
   def __init__(self):
-    if not hasattr(self, '_workflowId') or not hasattr(self, '_subjectSetId'):
-      raise NotImplementedError()
-    # self._workflow = Workflow.find(self._workflowId)
+    self._validateClassAttributesImplemented()
+
+  def processCompletedSubjects(self):
+    self._preloadWorkflowData()
     self._preloadSubjectData()
     self._preloadClassificationData()
+
+  def _preloadWorkflowData(self):
+    self._workflow = Workflow.find(self._workflowId)
 
   def _preloadSubjectData(self):
     self._subjectSet = SubjectSet.find(self._subjectSetId)
@@ -51,10 +55,27 @@ class AbstractProcessSubjectSet:
       'project_id': PROJECT_ID,
       'workflow_id': self._workflowId
     }
-    self._subjectClassifications = [c for c in Classification.where(**classificationKwargs)]
+    self._classifications = [c for c in Classification.where(**classificationKwargs)]
     import pdb; pdb.set_trace()
 
+  def _validateClassAttributesImplemented(self):
+    for attrName in self._requiredSubClassInstanceAttrs:
+      if not hasattr(self, attrName):
+        raise NotImplementedError()
+
+
 class RailroadClassifyStationRowSubjectSet(AbstractProcessSubjectSet):
+
+  TASKS = {
+    'CONTAINS_STATION_NAME': {
+      'id': 'T0',
+      'answers': {
+        0: 'Yes',
+        1: 'No'
+      }
+    }
+  }
+
   def __init__(self):
     self._workflowId = 4688
     self._subjectSetId = 8345
@@ -65,3 +86,4 @@ class RailroadClassifyStationRowSubjectSet(AbstractProcessSubjectSet):
 
 if __name__ == '__main__':
   subjectSet = RailroadClassifyStationRowSubjectSet()
+  subjectSet.processCompletedSubjects()
