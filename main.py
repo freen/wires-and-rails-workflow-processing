@@ -55,7 +55,14 @@ class AbstractProcessSubjectSet:
       'project_id': PROJECT_ID,
       'workflow_id': self._workflowId
     }
+    # TODO confirm we're only pulling subjects which haven't been retired / completed
     self._classifications = [c for c in Classification.where(**classificationKwargs)]
+    self._classificationsBySubject = {}
+    for c in self._classifications:
+      for subjectId in c.raw['links']['subjects']:
+        if subjectId not in self._classificationsBySubject:
+          self._classificationsBySubject[subjectId] = []
+        self._classificationsBySubject[subjectId].append(c)
     import pdb; pdb.set_trace()
 
   def _validateClassAttributesImplemented(self):
