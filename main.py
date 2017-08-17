@@ -9,7 +9,7 @@
 # project = Project.find(slug=PROJECT_SLUG)
 
 import json
-from numpy import array, mean
+from numpy import array, mean, std
 from scipy.cluster.vq import vq, kmeans, whiten
 
 with open('mock_annotations.json', 'r') as json_file:
@@ -38,10 +38,10 @@ for subject_annotation in mock_annotations:
 
 k_means_by_subject = {}
 
+# Calculate k means
 for subject_id, line_sets in line_sets_by_subject.items():
   features = array(line_sets)
+  std_dev = std(features, axis=0)
   whitened = whiten(features)
   book = array((whitened[0],whitened[2]))
-  k_means_by_subject[subject_id] = kmeans(whitened,book)
-
-import pdb; pdb.set_trace();
+  k_means_by_subject[subject_id] = kmeans(whitened,book) * std_dev
