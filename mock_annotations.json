@@ -1,0 +1,446 @@
+[
+  [
+    [
+      {
+        "task": "T0",
+        "task_label": "What kind of page is this?",
+        "value": "Railroad Station List"
+      },
+      {
+        "task": "T1",
+        "task_label": "Select columns on the page",
+        "value": [
+          {
+            "x": 1652.7977294921875,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          }
+        ]
+      }
+    ],
+    5823821
+  ],
+  [
+    [
+      {
+        "task": "T0",
+        "task_label": "What kind of page is this?",
+        "value": "Railroad Station List"
+      },
+      {
+        "task": "T1",
+        "task_label": "Select columns on the page",
+        "value": [
+          {
+            "x": 1636.6356201171875,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          }
+        ]
+      }
+    ],
+    5823821
+  ],
+  [
+    [
+      {
+        "task": "T0",
+        "task_label": "What kind of page is this?",
+        "value": "Railroad Station List"
+      },
+      {
+        "task": "T1",
+        "task_label": "Select columns on the page",
+        "value": [
+          {
+            "x": 1659.4212646484375,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          }
+        ]
+      }
+    ],
+    5823821
+  ],
+  [
+    [
+      {
+        "task": "T0",
+        "task_label": "What kind of page is this?",
+        "value": "Railroad Station List"
+      },
+      {
+        "task": "T1",
+        "task_label": "Select columns on the page",
+        "value": [
+          {
+            "x": 1651.8260498046875,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          }
+        ]
+      }
+    ],
+    5823821
+  ],
+  [
+    [
+      {
+        "task": "T0",
+        "task_label": "What kind of page is this?",
+        "value": "Railroad Station List"
+      },
+      {
+        "task": "T1",
+        "task_label": "Select columns on the page",
+        "value": [
+          {
+            "x": 1742.9688720703125,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          }
+        ]
+      }
+    ],
+    5823821
+  ],
+  [
+    [
+      {
+        "task": "T0",
+        "task_label": "What kind of page is this?",
+        "value": "Railroad Station List"
+      },
+      {
+        "task": "T1",
+        "task_label": "Select columns on the page",
+        "value": [
+          {
+            "x": 1634.807861328125,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Select column"
+          },
+          {
+            "x": 1107.5955810546875,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Select column"
+          },
+          {
+            "x": 592.7882690429688,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Select column"
+          },
+          {
+            "x": 2174.42529296875,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Select column"
+          },
+          {
+            "x": 2707.84033203125,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Select column"
+          }
+        ]
+      }
+    ],
+    5823822
+  ],
+  [
+    [
+      {
+        "task": "T0",
+        "task_label": "What kind of page is this?",
+        "value": "Railroad Station List"
+      },
+      {
+        "task": "T1",
+        "task_label": "Select columns on the page",
+        "value": [
+          {
+            "x": 590.6611938476562,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 1116.3013916015625,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 1641.0196533203125,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 2707.403564453125,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 2173.5458984375,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          }
+        ]
+      }
+    ],
+    5823822
+  ],
+  [
+    [
+      {
+        "task": "T0",
+        "task_label": "What kind of page is this?",
+        "value": "Railroad Station List"
+      },
+      {
+        "task": "T1",
+        "task_label": "Select columns on the page",
+        "value": [
+          {
+            "x": 590.6611938476562,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 1124.5189208984375,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 1643.9481201171875,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 2177.805908203125,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 2697.235107421875,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          }
+        ]
+      }
+    ],
+    5823822
+  ],
+  [
+    [
+      {
+        "task": "T0",
+        "task_label": "What kind of page is this?",
+        "value": "Railroad Station List"
+      },
+      {
+        "task": "T1",
+        "task_label": "Select columns on the page",
+        "value": [
+          {
+            "x": 2702.847412109375,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          }
+        ]
+      }
+    ],
+    5823822
+  ],
+  [
+    [
+      {
+        "task": "T0",
+        "task_label": "What kind of page is this?",
+        "value": "Railroad Station List"
+      },
+      {
+        "task": "T1",
+        "task_label": "Select columns on the page",
+        "value": [
+          {
+            "x": 2695.1865234375,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 2166.58642578125,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 1630.325439453125,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 1101.725341796875,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 573.125244140625,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          }
+        ]
+      }
+    ],
+    5823822
+  ],
+  [
+    [
+      {
+        "task": "T0",
+        "task_label": "What kind of page is this?",
+        "value": "Railroad Station List"
+      },
+      {
+        "task": "T1",
+        "task_label": "Select columns on the page",
+        "value": [
+          {
+            "x": 2702.847412109375,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 2158.925537109375,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 1645.647216796875,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 1170.6732177734375,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 596.1078491210938,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          }
+        ]
+      }
+    ],
+    5823822
+  ],
+  [
+    [
+      {
+        "task": "T0",
+        "task_label": "What kind of page is this?",
+        "value": "Railroad Station List"
+      },
+      {
+        "task": "T1",
+        "task_label": "Select columns on the page",
+        "value": [
+          {
+            "x": 534.8208618164062,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 2725.830078125,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 2166.58642578125,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 1109.38623046875,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          },
+          {
+            "x": 1630.325439453125,
+            "tool": 0,
+            "frame": 0,
+            "details": [],
+            "tool_label": "Separate columns with lines"
+          }
+        ]
+      }
+    ],
+    5823822
+  ]
+]
