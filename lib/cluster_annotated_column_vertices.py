@@ -7,65 +7,54 @@ class ClusterAnnotatedColumnVertices:
 
     def __init__(self, project_id):
         self._project_id = project_id
-        self._workflowId = 3548 # Railroads_Mark_Image_Type
-        self._subjectSetId = 8339 # pages_raw
-        self._taskId = 'T1' # Only column demarcation task
+        self._workflow_id = 3548 # Railroads_Mark_Image_Type
+        self._subject_set_id = 8339 # pages_raw
+        self._task_id = 'T1' # Only column demarcation task
         self._logger = logging.getLogger('WiresRailsWorkflowProcessor')
 
-        # Populated by _loadData()
-        self._annotationsByTaskAndSubject = {}
+        # Populated by _load_data()
+        self._annotations_by_task_and_subject = {}
         self._classifications = []
-        self._subjectSet = None
-        self._subjects = []
-        self._subjectIds = []
 
         # Populated by processAndCropCompletedSubjects()
         self._column_annotations_by_subject = {}
         self._vertex_centroids_by_subject = {}
 
-        self._loadData()
-        self._structureClassificationData()
+        self._load_data()
+        self._structure_classification_data()
 
-    def _loadData(self):
-        self._loadWorkflowData()
-        self._loadSubjectData()
-        self._loadClassificationData()
+    def _load_data(self):
+        self._load_workflow_data()
+        self._load_classification_data()
 
-    def _loadWorkflowData(self):
-        self._logger.debug("Loading workflow " + str(self._workflowId))
-        self._workflow = Workflow.find(self._workflowId)
+    def _load_workflow_data(self):
+        self._logger.debug("Loading workflow " + str(self._workflow_id))
+        self._workflow = Workflow.find(self._workflow_id)
 
     """
-    self._annotationsByTaskAndSubject[taskId][subjectId] = taskAnnotation
+    self._annotations_by_task_and_subject[task_id][subject_id] = task_annotation
     """
-    def _structureClassificationData(self):
+    def _structure_classification_data(self):
         self._logger.debug("Structuring classifications")
         for c in self._classifications:
-            for subjectId in c.raw['links']['subjects']:
-                for taskAnnotation in c.raw['annotations']:
-                    taskId = taskAnnotation['task']
-                    if taskId not in self._annotationsByTaskAndSubject:
-                        self._annotationsByTaskAndSubject[taskId] = {}
-                    if subjectId not in self._annotationsByTaskAndSubject[taskId]:
-                        self._annotationsByTaskAndSubject[taskId][subjectId] = []
-                    self._annotationsByTaskAndSubject[taskId][subjectId].append(taskAnnotation)
+            for subject_id in c.raw['links']['subjects']:
+                for annotation in c.raw['annotations']:
+                    task_id = annotation['task']
+                    if task_id not in self._annotations_by_task_and_subject:
+                        self._annotations_by_task_and_subject[task_id] = {}
+                    if subject_id not in self._annotations_by_task_and_subject[task_id]:
+                        self._annotations_by_task_and_subject[task_id][subject_id] = []
+                    self._annotations_by_task_and_subject[task_id][subject_id].append(annotation)
 
     # TODO only pull subjects which haven't been retired / completed
-    def _loadClassificationData(self):
+    def _load_classification_data(self):
         classificationKwargs = {
             'scope': 'project',
             'project_id': self._project_id,
-            'workflow_id': self._workflowId
+            'workflow_id': self._workflow_id
         }
         self._logger.debug("Loading classifications by params " + str(classificationKwargs))
         self._classifications = [c for c in Classification.where(**classificationKwargs)]
-
-    # NOTE note used anymore at the moment, remove unless retirement data is not denormalized onto classifications
-    def _loadSubjectData(self):
-        self._logger.debug("Loading subjects data")
-        self._subjectSet = SubjectSet.find(self._subjectSetId)
-        self._subjects = [s for s in self._subjectSet.subjects]
-        self._subjectIds = [s.id for s in self._subjects]
 
     def calculateVertexCentroids(self):
         self._collectColumnSetAnnotationsBySubject()
@@ -73,7 +62,7 @@ class ClusterAnnotatedColumnVertices:
         return self._calculateKMeansOfColumnSetAnnotations()
 
     def _collectColumnSetAnnotationsBySubject(self):
-        column_annotations = self._annotationsByTaskAndSubject[self._taskId]
+        column_annotations = self._annotations_by_task_and_subject[self._task_id]
         for subject_id, annotations in column_annotations.items():
             if not subject_id in self._column_annotations_by_subject:
                 self._column_annotations_by_subject[subject_id] = []
@@ -91,7 +80,9 @@ class ClusterAnnotatedColumnVertices:
     def _normalizeColumnSetAnnotations(self):
         for subject_id, line_sets in self._column_annotations_by_subject.items():
             avg_column_qty = round(median([len(line_set) for line_set in line_sets]))
-            normalized_set = [line_set for line_set in self._column_annotations_by_subject[subject_id] if len(line_set) == avg_column_qty]
+            normalized_set = [line_set for line_set in
+                              self._column_annotations_by_subject[subject_id]
+                              if len(line_set) == avg_column_qty]
             self._column_annotations_by_subject[subject_id] = normalized_set
 
     def _calculateKMeansOfColumnSetAnnotations(self):
