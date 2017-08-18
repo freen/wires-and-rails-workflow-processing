@@ -4,7 +4,7 @@ load_dotenv(find_dotenv())
 from panoptes_client import Project, Panoptes, Workflow, SubjectSet, Classification
 from settings import *
 
-from numpy import array, mean, std
+from numpy import array, median, std
 from scipy.cluster.vq import kmeans, whiten
 
 import logging
@@ -101,9 +101,7 @@ class ClusterAndCropRawPagesByColumnAnnotations:
   def processAndCropCompletedSubjects(self):
     self._collectColumnSetAnnotationsBySubject()
     self._normalizeColumnSetAnnotations()
-    import pdb; pdb.set_trace();
     self._calculateKMeansOfColumnSetAnnotations()
-    import pdb; pdb.set_trace();
 
   def _collectColumnSetAnnotationsBySubject(self):
     column_annotations = self._annotationsByTaskAndSubject[self._taskId]
@@ -115,45 +113,19 @@ class ClusterAndCropRawPagesByColumnAnnotations:
         self._column_annotations_by_subject[subject_id].append(column_vertices)
 
   """
-  Strip out line sets which include column qties deviant from the average column qty for that subject
-  This works in our case because the quantity of columns on a subject is extremely clear and we simply want to
-    exclude anomalous / erroneous entries, which should be very rare, so that they don't ruin our k means logic.
+  Strip out line sets which include column qties deviant from the average column qty for that subject. This works in
+  our case because the quantity of columns on a subject is extremely clear and we simply want to exclude anomalous /
+  erroneous entries, which should be very rare, so that they don't ruin our k means logic.
+  e.g. for a set of classifications which include 5, 5, 5, 5, and 1 vertices respectively, prune the classification
+  which includes only 1 vertex.
   """
   def _normalizeColumnSetAnnotations(self):
     for subject_id, line_sets in self._column_annotations_by_subject.items():
-      avg_column_qty = round(mean([len(line_set) for line_set in line_sets]))
-      import pdb; pdb.set_trace();
+      avg_column_qty = round(median([len(line_set) for line_set in line_sets]))
       normalized_set = [line_set for line_set in self._column_annotations_by_subject[subject_id] if len(line_set) == avg_column_qty]
-      import pdb; pdb.set_trace();
       self._column_annotations_by_subject[subject_id] = normalized_set
 
-    # import pdb; pdb.set_trace();
-    # line_sets_by_subject = {}
-
-    # with open('mock_annotations.json', 'r') as json_file:
-    #   mock_annotations = json.load(json_file)
-
-    # for subject_annotation in mock_annotations:
-    #   annotations, subject_id = subject_annotation
-    #   if not subject_id in line_sets_by_subject:
-    #     line_sets_by_subject[subject_id] = []
-    #   column_annotations = [a for a in annotations if a['task'] == self._taskId]
-
-    #   # Aggregate line sets by subject
-    #   for column_annotation in column_annotations:
-    #     # Append classification line set to subject's sets
-    #     classification_line_set = [line['x'] for line in column_annotation['value']]
-    #     line_sets_by_subject[subject_id].append(classification_line_set)
-
-    #   # Strip out line sets which include column qties deviant from the average column qty for that subject
-    #   # This works in our case because the quantity of columns on a subject is extremely clear and we simply want to
-    #   #   exclude anomalous / erroneous entries, which should be very rare, so that they don't ruin our k means logic.
-    #   for subject_id, line_sets in line_sets_by_subject.items():
-    #     avg_column_qty = round(mean([len(line_set) for line_set in line_sets]))
-    #     line_sets_by_subject[subject_id] = [line_set for line_set in line_sets_by_subject[subject_id] if len(line_set) == avg_column_qty]
-
   def _calculateKMeansOfColumnSetAnnotations(self):
-    # Calculate k means
     for subject_id, line_sets in self._column_annotations_by_subject.items():
       features = array(line_sets)
       std_dev = std(features, axis=0)
