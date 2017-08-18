@@ -1,6 +1,12 @@
+"""
+Package for performing post-classification workflow steps for the Wires and Rails Zooniverse
+project.
+"""
+
 from distutils.core import setup
 
-DESCRIPTION = 'Background service for workflow propagation and image processing for Wires and Rails'
+DESCRIPTION = ('Package for performing post-classification workflow steps for the Wires and ' +
+               'Rails Zooniverse project.')
 
 setup(name='wires-and-rails-workflow-processing',
       version='0.0.1',
@@ -9,6 +15,8 @@ setup(name='wires-and-rails-workflow-processing',
       url='https://github.com/freen/wires-and-rails-workflow-processing',
       install_requires=[
           'panoptes-client',
-          'python-dotenv'
+          'python-dotenv',
+          'scipy',
+          'pylint'
       ],
      )

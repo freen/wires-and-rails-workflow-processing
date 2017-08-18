@@ -1,16 +1,23 @@
 #!/usr/bin/env python3
 
+"""
+Runner script. Define .env variables per .env.example and run e.g.
+
+   python3 main.py
+"""
+
 import logging
 import settings
 from panoptes_client import Panoptes
 from lib.cluster_annotated_column_vertices import ClusterAnnotatedColumnVertices
 
-def setup_logger(log_level):
+def setup_logger(log_level, file_name='run.log'):
+    """Configure file and console logger streams"""
     logger = logging.getLogger('WiresRailsWorkflowProcessor')
     logger.setLevel(logging.DEBUG)
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 
-    file_handler = logging.FileHandler('run.log')
+    file_handler = logging.FileHandler(file_name)
     file_handler.setLevel(log_level)
     file_handler.setFormatter(formatter)
 
@@ -23,6 +30,7 @@ def setup_logger(log_level):
     return logger
 
 def main(log_level):
+    """Run all processing tasks"""
     logger = setup_logger(log_level)
     logger.debug("Running Wires and Rails Workflow Processor")
     Panoptes.connect(username=settings.PANOPTES_USERNAME, password=settings.PANOPTES_PASSWORD)
@@ -34,7 +42,8 @@ def main(log_level):
         'task_id': 'T1' # Only column demarcation task
     })
 
-    vertex_centroids_by_subject = processor.calculate_vertex_centroids()
+    processor.fetch_classification_data()
+    # vertex_centroids_by_subject = processor.calculate_vertex_centroids()
 
 # TODO fetch subject image
 # TODO crop image on vertex centroids
