@@ -33,15 +33,21 @@ for subject_annotation in mock_annotations:
   # This works in our case because the quantity of columns on a subject is extremely clear and we simply want to
   #   exclude anomalous / erroneous entries, which should be very rare, so that they don't ruin our k means logic.
   for subject_id, line_sets in line_sets_by_subject.items():
-    avg_column_qty =  mean([len(line_set) for line_set in line_sets])
+    avg_column_qty = round(mean([len(line_set) for line_set in line_sets]))
     line_sets_by_subject[subject_id] = [line_set for line_set in line_sets_by_subject[subject_id] if len(line_set) == avg_column_qty]
 
-k_means_by_subject = {}
+kmeans_by_subject = {}
 
 # Calculate k means
 for subject_id, line_sets in line_sets_by_subject.items():
   features = array(line_sets)
   std_dev = std(features, axis=0)
   whitened = whiten(features)
-  book = array((whitened[0],whitened[2]))
-  k_means_by_subject[subject_id] = kmeans(whitened,book) * std_dev
+  kmeans_codebook, distortion = kmeans(whitened, 1)
+  kmeans_by_subject[subject_id] = kmeans_codebook * std_dev
+  # book = array((whitened[0],whitened[2]))
+  # kmeans_codebook, distortion = kmeans(whitened, book)
+  # kmeans_by_subject[subject_id] = (kmeans_codebook * std_dev)[-1]
+
+import pdb; pdb.set_trace(); 
+
