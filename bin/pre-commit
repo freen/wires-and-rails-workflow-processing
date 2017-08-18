@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+pylint -f colorized *.py **/*.py
+RC=$?
+
+if [[ "$RC" != "0" ]]; then
+  echo "(pylint failed. [code $RC])"
+  exit $RC
+fi
