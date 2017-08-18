@@ -27,8 +27,14 @@ def main(log_level):
     logger.debug("Running Wires and Rails Workflow Processor")
     Panoptes.connect(username=settings.PANOPTES_USERNAME, password=settings.PANOPTES_PASSWORD)
 
-    processor = ClusterAnnotatedColumnVertices(settings.PROJECT_ID)
-    vertex_centroids_by_subject = processor.calculateVertexCentroids()
+    processor = ClusterAnnotatedColumnVertices({
+        'project_id': settings.PROJECT_ID,
+        'workflow_id': 3548, # Railroads_Mark_Image_Type
+        'subject_set_id': 8339, # pages_raw
+        'task_id': 'T1' # Only column demarcation task
+    })
+
+    vertex_centroids_by_subject = processor.calculate_vertex_centroids()
 
 # TODO fetch subject image
 # TODO crop image on vertex centroids
