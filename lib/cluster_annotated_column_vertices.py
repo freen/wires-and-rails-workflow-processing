@@ -14,8 +14,8 @@ class ClusterAnnotatedColumnVertices:
     and finds the vertex centroids per subject using k-means clustering.
     """
 
-    def __init__(self, project_metada):
-        self._project_metada = project_metada
+    def __init__(self, project_metadata):
+        self._project_metadata = project_metadata
         self._logger = logging.getLogger('WiresRailsWorkflowProcessor')
 
         # Populated by _load_data()
@@ -33,16 +33,16 @@ class ClusterAnnotatedColumnVertices:
         self._structure_classification_data()
 
     def _load_data(self):
-        self._logger.debug("Loading workflow " + str(self._project_metada['workflow_id']))
-        self._workflow = Workflow.find(self._project_metada['workflow_id'])
+        self._logger.debug("Loading workflow " + str(self._project_metadata['workflow_id']))
+        self._workflow = Workflow.find(self._project_metadata['workflow_id'])
         self._load_classification_data()
 
     # TODO only pull subjects which haven't been retired / completed
     def _load_classification_data(self):
         classification_kwargs = {
             'scope': 'project',
-            'project_id': self._project_metada['project_id'],
-            'workflow_id': self._project_metada['workflow_id']
+            'project_id': self._project_metadata['project_id'],
+            'workflow_id': self._project_metadata['workflow_id']
         }
         self._logger.debug("Loading classifications by params " + str(classification_kwargs))
         self._classifications = [c for c in Classification.where(**classification_kwargs)]
@@ -75,7 +75,7 @@ class ClusterAnnotatedColumnVertices:
         return self._calculate_kmeans_of_column_set_annotations()
 
     def _collect_column_set_annotations_by_subject(self):
-        column_annotations = self._annotations_by_task_and_subject[self._project_metada['task_id']]
+        column_annotations = self._annotations_by_task_and_subject[self._project_metadata['task_id']]
         for subject_id, annotations in column_annotations.items():
             if not subject_id in self._column_annotations_by_subject:
                 self._column_annotations_by_subject[subject_id] = []

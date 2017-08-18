@@ -18,5 +18,6 @@ setup(name='wires-and-rails-workflow-processing',
           'python-dotenv',
           'scipy',
           'pylint'
+          # easy_install Pillow
       ],
      )
