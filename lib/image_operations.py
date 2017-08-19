@@ -57,7 +57,8 @@ class ImageOperations:
     @classmethod
     def _slice_column(cls, image, image_path, column_int, box):
         logger = logging.getLogger(settings.APP_NAME)
-        out_path = "%s_%d" % (image_path, column_int)
+        name, ext = os.path.splitext(image_path)
+        out_path = "%s_%d%s" % (name, column_int, ext)
         logger.debug('Cutting with box %s and saving to %s', str(box), out_path)
         column = image.crop(box)
         column.save(out_path, image.format)
