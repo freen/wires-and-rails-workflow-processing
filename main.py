@@ -19,7 +19,7 @@ DOCUMENT_VERTICES_WORKFLOW_TASK_ID = 'T1' # Only column demarcation task
 
 def _setup_logger(log_level, file_name='run.log'):
     """Configure file and console logger streams"""
-    logger = logging.getLogger(settings.LOGGER_NAME)
+    logger = logging.getLogger(settings.APP_NAME)
     logger.setLevel(logging.DEBUG)
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 

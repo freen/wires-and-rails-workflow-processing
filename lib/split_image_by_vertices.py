@@ -13,7 +13,7 @@ class SplitImageByVertices:
     """
 
     def __init__(self):
-        self._logger = logging.getLogger(settings.LOGGER_NAME)
+        self._logger = logging.getLogger(settings.APP_NAME)
 
     def split(self, image_path_by_subject, vertex_centroids_by_subject):
         """Given each subject_id's image paths and centroids, chop the images into columns"""
@@ -23,8 +23,7 @@ class SplitImageByVertices:
             image = Image.open(image_path)
             width, height = image.size
             column_int = 0
-            # TODO remove unnecessary array dimension from vertex_centroids_by_subject
-            for centroid in vertex_centroids_by_subject[subject_id][0]:
+            for centroid in vertex_centroids_by_subject[subject_id]:
                 centroid = round(centroid)
                 box = (offset, 0, centroid, height)
                 self._slice_column(image, image_path, column_int, box)

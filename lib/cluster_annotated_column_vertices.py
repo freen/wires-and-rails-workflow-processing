@@ -17,7 +17,7 @@ class ClusterAnnotatedColumnVertices:
 
     def __init__(self, project_metadata):
         self._project_metadata = project_metadata
-        self._logger = logging.getLogger(settings.LOGGER_NAME)
+        self._logger = logging.getLogger(settings.APP_NAME)
 
         # Populated by _load_data()
         self._annotations_by_task_and_subject = {}
@@ -108,7 +108,10 @@ class ClusterAnnotatedColumnVertices:
             std_dev = std(features, axis=0)
             whitened = whiten(features)
             kmeans_codebook, _distortion = kmeans(whitened, 1)
-            self._vertex_centroids_by_subject[subject_id] = kmeans_codebook * std_dev
+            [dewhitened_kmeans] = kmeans_codebook * std_dev
+            self._logger.debug('For subject %s, cluster centroids: %s', subject_id,
+                               str(dewhitened_kmeans))
+            self._vertex_centroids_by_subject[subject_id] = dewhitened_kmeans
             # book = array((whitened[0],whitened[2]))
             # kmeans_codebook, distortion = kmeans(whitened, book)
             # self._vertex_centroids_by_subject[subject_id] = (kmeans_codebook * std_dev)[-1]

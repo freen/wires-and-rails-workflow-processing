@@ -6,7 +6,7 @@ import os
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
-LOGGER_NAME = 'WiresRailsWorkflowProcessor'
+APP_NAME = 'WiresRailsWorkflowProcessor'
 PANOPTES_USERNAME = os.environ.get("PANOPTES_USERNAME")
 PANOPTES_PASSWORD = os.environ.get("PANOPTES_PASSWORD")
 PROJECT_SLUG = os.environ.get("PROJECT_SLUG")
