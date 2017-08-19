@@ -10,6 +10,7 @@ import logging
 import urllib.request
 import settings
 from lib.cluster_annotated_column_vertices import ClusterAnnotatedColumnVertices
+from lib.split_image_by_vertices import SplitImageByVertices
 from panoptes_client import Panoptes, Subject
 
 DOCUMENT_VERTICES_WORKFLOW_ID = 3548 # "Railroads_Mark_Image_Type"
@@ -18,7 +19,7 @@ DOCUMENT_VERTICES_WORKFLOW_TASK_ID = 'T1' # Only column demarcation task
 
 def _setup_logger(log_level, file_name='run.log'):
     """Configure file and console logger streams"""
-    logger = logging.getLogger('WiresRailsWorkflowProcessor')
+    logger = logging.getLogger(settings.LOGGER_NAME)
     logger.setLevel(logging.DEBUG)
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 
@@ -53,7 +54,7 @@ def main(log_level):
     logger.debug("Running Wires and Rails Workflow Processor")
     Panoptes.connect(username=settings.PANOPTES_USERNAME, password=settings.PANOPTES_PASSWORD)
 
-    processor = ClusterAnnotatedColumnVertices({
+    clusterer = ClusterAnnotatedColumnVertices({
         'project_id': settings.PROJECT_ID,
         'workflow_id': DOCUMENT_VERTICES_WORKFLOW_ID,
         'subject_set_id': DOCUMENT_VERTICES_SUBJECT_SET_ID,
@@ -61,13 +62,16 @@ def main(log_level):
     })
 
     # Calculate vertext centroids
-    vertex_centroids_by_subject = processor.calculate_vertex_centroids()
+    vertex_centroids_by_subject = clusterer.calculate_vertex_centroids()
 
     # Fetch subject images of completed subjects
     subject_ids = vertex_centroids_by_subject.keys()
-    image_paths_by_subject_ids = _fetch_images_to_tmp(subject_ids)
+    image_path_by_subject_ids = _fetch_images_to_tmp(subject_ids)
 
     # Split subject images by vertex centroids
+    splitter = SplitImageByVertices()
+    splitter.split(image_path_by_subject_ids, vertex_centroids_by_subject)
+
 
 # TODO only pull & process subjects which haven't been retired / completed
 # TODO fetch subject image

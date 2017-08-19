@@ -4,6 +4,7 @@ and finds the vertex centroids per subject using k-means clustering.
 """
 
 import logging
+import settings
 from panoptes_client import Workflow, Classification
 from numpy import array, median, std
 from scipy.cluster.vq import kmeans, whiten
@@ -16,7 +17,7 @@ class ClusterAnnotatedColumnVertices:
 
     def __init__(self, project_metadata):
         self._project_metadata = project_metadata
-        self._logger = logging.getLogger('WiresRailsWorkflowProcessor')
+        self._logger = logging.getLogger(settings.LOGGER_NAME)
 
         # Populated by _load_data()
         self._annotations_by_task_and_subject = {}
@@ -33,7 +34,7 @@ class ClusterAnnotatedColumnVertices:
         self._structure_classification_data()
 
     def _load_data(self):
-        self._logger.debug("Loading workflow " + str(self._project_metadata['workflow_id']))
+        self._logger.debug("Loading workflow %s", str(self._project_metadata['workflow_id']))
         self._workflow = Workflow.find(self._project_metadata['workflow_id'])
         self._load_classification_data()
 
@@ -44,7 +45,7 @@ class ClusterAnnotatedColumnVertices:
             'project_id': self._project_metadata['project_id'],
             'workflow_id': self._project_metadata['workflow_id']
         }
-        self._logger.debug("Loading classifications by params " + str(classification_kwargs))
+        self._logger.debug("Loading classifications by params %s", str(classification_kwargs))
         self._classifications = [c for c in Classification.where(**classification_kwargs)]
 
     def _structure_classification_data(self):
