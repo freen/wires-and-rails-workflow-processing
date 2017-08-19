@@ -17,12 +17,11 @@ class SplitImageByVertices:
 
     def split(self, image_path_by_subject, vertex_centroids_by_subject):
         """Given each subject_id's image paths and centroids, chop the images into columns"""
-        offset = 0
         for subject_id, image_path in image_path_by_subject.items():
             self._logger.debug('Loading subject id %s image file %s', subject_id, image_path)
+            offset, column_int = 0, 0
             image = Image.open(image_path)
             width, height = image.size
-            column_int = 0
             for centroid in vertex_centroids_by_subject[subject_id]:
                 centroid = round(centroid)
                 box = (offset, 0, centroid, height)
