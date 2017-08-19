@@ -27,7 +27,7 @@ class ClusterAnnotatedColumnVertices:
         self._column_annotations_by_subject = {}
         self._vertex_centroids_by_subject = {}
 
-    def fetch_classification_data(self):
+    def _fetch_classification_data(self):
         """Fetches classification data from Panoptes API based on project_metadata criteria"""
         self._load_data()
         self._structure_classification_data()
@@ -70,12 +70,14 @@ class ClusterAnnotatedColumnVertices:
         Collect all column vertex classification annotations per subject and calculate vertex
         centroids using k-means clustering.
         """
+        self._fetch_classification_data()
         self._collect_column_set_annotations_by_subject()
         self._normalize_column_set_annotations()
         return self._calculate_kmeans_of_column_set_annotations()
 
     def _collect_column_set_annotations_by_subject(self):
-        column_annotations = self._annotations_by_task_and_subject[self._project_metadata['task_id']]
+        task_id = self._project_metadata['task_id']
+        column_annotations = self._annotations_by_task_and_subject[task_id]
         for subject_id, annotations in column_annotations.items():
             if not subject_id in self._column_annotations_by_subject:
                 self._column_annotations_by_subject[subject_id] = []

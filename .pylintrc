@@ -1,3 +1,6 @@
+[DESIGN]
+min-public-methods=1
+
 [MISCELLANEOUS]
 # Don't complain about TODO comments
 notes=FIXME,XXX

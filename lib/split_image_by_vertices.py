@@ -11,4 +11,7 @@ class SplitImageByVertices:
     """
 
     def __init__(self):
-      pass
+        pass
+
+    def split(self, image_paths_by_subject, vertex_centroids_by_subject):
+        pass
