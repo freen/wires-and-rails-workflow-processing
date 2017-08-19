@@ -84,6 +84,7 @@ class ClusterAnnotatedColumnVertices:
                 self._column_annotations_by_subject[subject_id] = []
             for annotation in annotations:
                 column_vertices = [line['x'] for line in annotation['value']]
+                column_vertices.sort()
                 self._column_annotations_by_subject[subject_id].append(column_vertices)
 
     def _normalize_column_set_annotations(self):
