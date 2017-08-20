@@ -30,7 +30,6 @@ def _setup_logger(log_level, file_name='run.log'):
     logger.addHandler(console_handler)
     return logger
 
-
 def main(log_level):
     """Run all processing tasks"""
     logger = _setup_logger(log_level)

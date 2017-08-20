@@ -19,6 +19,7 @@ class ImageOperations:
     @classmethod
     def fetch_subject_images_to_tmp(cls, subject_ids):
         """Given subject_ids, fetch subject image files to tmp dir storage and return the paths"""
+        logger = logging.getLogger(settings.APP_NAME)
         file_paths_by_subject_id = {}
         subjects = Subject.where(scope='project', project_id=settings.PROJECT_ID,
                                  workflow_id=settings.DOCUMENT_VERTICES_WORKFLOW_ID,
@@ -26,6 +27,7 @@ class ImageOperations:
         for subject in subjects:
             locations_urls = list(subject.raw['locations'][0].values())
             subject_image_url = locations_urls[0]
+            logger.debug('Retrieving subject image for %s: %s', subject.id, subject_image_url)
             local_filename, _headers = urllib.request.urlretrieve(subject_image_url)
             path = urlparse(subject_image_url).path
             ext = os.path.splitext(path)[1]
