@@ -43,7 +43,7 @@ def main(log_level):
         'task_id': settings.DOCUMENT_VERTICES_WORKFLOW_TASK_ID
     })
 
-    # Calculate vertext centroids
+    # Calculate vertex centroids
     vertex_centroids_by_subject = clusterer.calculate_vertex_centroids()
 
     # Fetch subject images of completed subjects
@@ -54,9 +54,19 @@ def main(log_level):
     split_subject_images = ImageOperations.split(image_path_by_subject_ids,
                                                  vertex_centroids_by_subject)
 
-# TODO row segmentation of new columns with ocropy
-# TODO create new subjects w/ new cropped images w/ retained metadata
-# TODO only pull & process subjects which haven't been retired / completed
+    for subject_id, column_image_paths in split_subject_images.items():
+        for image_file_path in column_image_paths:
+            OcropyImageOperations.perform_row_segmentation(image_file_path)
+
+# TODO SEQUENCE:
+#
+# [ ] after kmeans clustering, shove the result into a queue (rq zB https://github.com/nvie/rq)
+# [ ] write to Panoptes metadata saying we queued the subject for image processing
+#  =  inside the rq arch
+#     [ ] move the vertical splitting logic in
+#     [ ] add the ocropy row segmenter
+#     [ ] create new subjects w/ new cropped images w/ retained metadata
+# [ ] revise such that we only pull & process subjects which haven't been retired / completed
 
 if __name__ == '__main__':
     main(logging.DEBUG)

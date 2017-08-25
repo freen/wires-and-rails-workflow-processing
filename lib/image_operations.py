@@ -41,7 +41,9 @@ class ImageOperations:
     def split(cls, image_path_by_subject, vertex_centroids_by_subject):
         """Given each subject_id's image paths and centroids, chop the images into columns"""
         logger = logging.getLogger(settings.APP_NAME)
+        split_images = {}
         for subject_id, image_path in image_path_by_subject.items():
+            split_images[subject_id] = []
             logger.debug('Loading subject id %s image file %s', subject_id, image_path)
             offset, column_int = 0, 0
             image = Image.open(image_path)
@@ -49,12 +51,14 @@ class ImageOperations:
             for centroid in vertex_centroids_by_subject[subject_id]:
                 centroid = round(centroid)
                 box = (offset, 0, centroid, height)
-                cls._slice_column(image, image_path, column_int, box)
+                new_path = cls._slice_column(image, image_path, column_int, box)
+                split_images[subject_id].append(new_path)
                 offset = centroid
                 column_int += 1
             # Final column, from last centroid to max width
             box = (offset, 0, width, height)
             cls._slice_column(image, image_path, column_int, box)
+        return split_images
 
     @classmethod
     def _slice_column(cls, image, image_path, column_int, box):
@@ -64,3 +68,4 @@ class ImageOperations:
         logger.debug('Cutting with box %s and saving to %s', str(box), out_path)
         column = image.crop(box)
         column.save(out_path, image.format)
+        return out_path
