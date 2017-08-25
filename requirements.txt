@@ -1,3 +1,4 @@
 scipy
 panoptes-client
 python-dotenv
+Pillow
