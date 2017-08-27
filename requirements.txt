@@ -2,3 +2,5 @@ scipy
 panoptes-client
 python-dotenv
 Pillow
+redis
+rq

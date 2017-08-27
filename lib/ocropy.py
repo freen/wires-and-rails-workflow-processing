@@ -6,7 +6,7 @@ import logging
 import settings
 from subprocess import Popen, PIPE
 
-class OcropyImageOperations:
+class Ocropy:
     """
     Interface to ocropus binaries for image row segmentation.
     """

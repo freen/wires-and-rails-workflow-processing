@@ -9,7 +9,7 @@ from panoptes_client import Workflow, Classification
 from numpy import array, median, std
 from scipy.cluster.vq import kmeans, whiten
 
-class ClusterAnnotatedColumnVertices:
+class KmeansClusterAnnotatedColumnVertices:
     """
     Connects to Panoptes API, fetchs classifications from the Railroad_Mark_Image_Type workflow,
     and finds the vertex centroids per subject using k-means clustering.

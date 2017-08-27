@@ -7,6 +7,7 @@ import logging
 import urllib.request
 from urllib.parse import urlparse
 import settings
+from lib.ocropy import Ocropy
 from PIL import Image
 from panoptes_client import Subject
 
@@ -38,7 +39,26 @@ class ImageOperations:
         return file_paths_by_subject_id
 
     @classmethod
-    def split(cls, image_path_by_subject, vertex_centroids_by_subject):
+    def perform_image_segmentation(cls, vertex_centroids_by_subject):
+        """Fetch subject images, split columns by centroids, row segmentation with Ocropy"""
+        logger = logging.getLogger(settings.APP_NAME)
+        logger.debug('Received the following subject centroids for image segmentation: %s',
+                     str(vertex_centroids_by_subject))
+        subject_ids = vertex_centroids_by_subject.keys()
+        image_path_by_subject_ids = cls.fetch_subject_images_to_tmp(subject_ids)
+
+        # Split subject images by vertex centroids
+        split_subject_images = cls._split_by_vertical_centroids(
+           image_path_by_subject_ids,
+           vertex_centroids_by_subject
+        )
+
+        for subject_id, column_image_paths in split_subject_images.items():
+            for image_file_path in column_image_paths:
+                Ocropy.perform_row_segmentation(image_file_path)
+
+    @classmethod
+    def _split_by_vertical_centroids(cls, image_path_by_subject, vertex_centroids_by_subject):
         """Given each subject_id's image paths and centroids, chop the images into columns"""
         logger = logging.getLogger(settings.APP_NAME)
         split_images = {}
