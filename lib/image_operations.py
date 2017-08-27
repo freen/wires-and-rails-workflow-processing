@@ -6,10 +6,14 @@ import logging
 import os
 import urllib.request
 from urllib.parse import urlparse
+
 import settings
+from lib.logger import setup_logger
 from lib.ocropy import Ocropy
 from PIL import Image
 from panoptes_client import Subject
+
+LOGGER_NAME = 'image_operations'
 
 class ImageOperations:
     """
@@ -17,11 +21,10 @@ class ImageOperations:
     annotations.
     """
 
-    @classmethod
-    def _logger(cls):
-        return logging.getLogger(settings.APP_NAME)
+    def __init__(self, logger):
+        self._logger = logger
 
-    def fetch_subject_images_to_tmp(self, subject_ids):
+    def _fetch_subject_images_to_tmp(self, subject_ids):
         """Given subject_ids, fetch subject image files to tmp dir storage and return the paths"""
         file_paths_by_subject_id = {}
         subjects = Subject.where(scope='project', project_id=settings.PROJECT_ID,
@@ -30,8 +33,8 @@ class ImageOperations:
         for subject in subjects:
             locations_urls = list(subject.raw['locations'][0].values())
             subject_image_url = locations_urls[0]
-            self._logger().debug('Retrieving subject image for %s: %s', subject.id,
-                                 subject_image_url)
+            self._logger.debug('Retrieving subject image for %s: %s', subject.id,
+                               subject_image_url)
             local_filename, _headers = urllib.request.urlretrieve(subject_image_url)
             path = urlparse(subject_image_url).path
             ext = os.path.splitext(path)[1]
@@ -43,10 +46,10 @@ class ImageOperations:
 
     def perform_image_segmentation(self, vertex_centroids_by_subject):
         """Fetch subject images, split columns by centroids, row segmentation with Ocropy"""
-        self._logger().debug('Received the following subject centroids for image segmentation: %s',
-                             str(vertex_centroids_by_subject))
+        self._logger.debug('Received the following subject centroids for image segmentation: %s',
+                           str(vertex_centroids_by_subject))
         subject_ids = vertex_centroids_by_subject.keys()
-        image_path_by_subject_ids = self.fetch_subject_images_to_tmp(subject_ids)
+        image_path_by_subject_ids = self._fetch_subject_images_to_tmp(subject_ids)
 
         # Split subject images by vertex centroids
         split_subject_images = self._split_by_vertical_centroids(
@@ -63,7 +66,7 @@ class ImageOperations:
         split_images = {}
         for subject_id, image_path in image_path_by_subject.items():
             split_images[subject_id] = []
-            self._logger().debug('Loading subject id %s image file %s', subject_id, image_path)
+            self._logger.debug('Loading subject id %s image file %s', subject_id, image_path)
             offset, column_int = 0, 0
             image = Image.open(image_path)
             width, height = image.size
@@ -82,7 +85,12 @@ class ImageOperations:
     def _slice_column(self, image, image_path, column_int, box):
         name, ext = os.path.splitext(image_path)
         out_path = "%s_%d%s" % (name, column_int, ext)
-        self._logger().debug('Cutting with box %s and saving to %s', str(box), out_path)
+        self._logger.debug('Cutting with box %s and saving to %s', str(box), out_path)
         column = image.crop(box)
         column.save(out_path, image.format)
         return out_path
+
+def queue_perform_image_segmentation(vertex_centroids_by_subject):
+    logger = setup_logger(LOGGER_NAME, 'log/image_operations.log')
+    image_operations = ImageOperations(logger)
+    image_operations.perform_image_segmentation(vertex_centroids_by_subject)
