@@ -13,20 +13,20 @@ from lib.ocropy import Ocropy
 from PIL import Image
 from panoptes_client import Subject
 
-LOGGER_NAME = 'image_operations'
-
 class ImageOperations:
     """
     Utility for splitting original subject images by vertex centroids derived from user
     annotations.
     """
 
+    LOGGER_NAME = 'image_operations'
+
     def __init__(self, logger):
         self._logger = logger
 
     @classmethod
     def queue_perform_image_segmentation(cls, vertex_centroids_by_subject):
-        logger = setup_logger(LOGGER_NAME, 'log/image_operations.log')
+        logger = setup_logger(cls.LOGGER_NAME, 'log/image_operations.log')
         image_operations = ImageOperations(logger)
         image_operations.perform_image_segmentation(vertex_centroids_by_subject)
 
@@ -43,9 +43,11 @@ class ImageOperations:
             vertex_centroids_by_subject
         )
 
+        ocropy = Ocropy(self._logger)
+
         for subject_id, column_image_paths in split_subject_images.items():
             for image_file_path in column_image_paths:
-                Ocropy.perform_row_segmentation(image_file_path)
+                ocropy.perform_row_segmentation(image_file_path)
 
     def _fetch_subject_images_to_tmp(self, subject_ids):
         """Given subject_ids, fetch subject image files to tmp dir storage and return the paths"""

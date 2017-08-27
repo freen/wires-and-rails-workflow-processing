@@ -1,5 +1,6 @@
 .env
 *.pyc
+.pynative/*
 *.log
 .DS_Store
 dump.rdb
