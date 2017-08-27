@@ -24,6 +24,29 @@ class ImageOperations:
     def __init__(self, logger):
         self._logger = logger
 
+    @classmethod
+    def queue_perform_image_segmentation(cls, vertex_centroids_by_subject):
+        logger = setup_logger(LOGGER_NAME, 'log/image_operations.log')
+        image_operations = ImageOperations(logger)
+        image_operations.perform_image_segmentation(vertex_centroids_by_subject)
+
+    def perform_image_segmentation(self, vertex_centroids_by_subject):
+        """Fetch subject images, split columns by centroids, row segmentation with Ocropy"""
+        self._logger.debug('Received the following subject centroids for image segmentation: %s',
+                           str(vertex_centroids_by_subject))
+        subject_ids = vertex_centroids_by_subject.keys()
+        image_path_by_subject_ids = self._fetch_subject_images_to_tmp(subject_ids)
+
+        # Split subject images by vertex centroids
+        split_subject_images = self._split_by_vertical_centroids(
+            image_path_by_subject_ids,
+            vertex_centroids_by_subject
+        )
+
+        for subject_id, column_image_paths in split_subject_images.items():
+            for image_file_path in column_image_paths:
+                Ocropy.perform_row_segmentation(image_file_path)
+
     def _fetch_subject_images_to_tmp(self, subject_ids):
         """Given subject_ids, fetch subject image files to tmp dir storage and return the paths"""
         file_paths_by_subject_id = {}
@@ -43,23 +66,6 @@ class ImageOperations:
             file_paths_by_subject_id[subject.id] = custom_filepath
 
         return file_paths_by_subject_id
-
-    def perform_image_segmentation(self, vertex_centroids_by_subject):
-        """Fetch subject images, split columns by centroids, row segmentation with Ocropy"""
-        self._logger.debug('Received the following subject centroids for image segmentation: %s',
-                           str(vertex_centroids_by_subject))
-        subject_ids = vertex_centroids_by_subject.keys()
-        image_path_by_subject_ids = self._fetch_subject_images_to_tmp(subject_ids)
-
-        # Split subject images by vertex centroids
-        split_subject_images = self._split_by_vertical_centroids(
-            image_path_by_subject_ids,
-            vertex_centroids_by_subject
-        )
-
-        for subject_id, column_image_paths in split_subject_images.items():
-            for image_file_path in column_image_paths:
-                Ocropy.perform_row_segmentation(image_file_path)
 
     def _split_by_vertical_centroids(self, image_path_by_subject, vertex_centroids_by_subject):
         """Given each subject_id's image paths and centroids, chop the images into columns"""
@@ -89,8 +95,3 @@ class ImageOperations:
         column = image.crop(box)
         column.save(out_path, image.format)
         return out_path
-
-def queue_perform_image_segmentation(vertex_centroids_by_subject):
-    logger = setup_logger(LOGGER_NAME, 'log/image_operations.log')
-    image_operations = ImageOperations(logger)
-    image_operations.perform_image_segmentation(vertex_centroids_by_subject)

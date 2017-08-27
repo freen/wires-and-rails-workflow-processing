@@ -9,7 +9,7 @@ Runner script. Define .env variables per .env.example and run e.g.
 import logging
 import settings
 from lib.logger import setup_logger
-from lib.image_operations import queue_perform_image_segmentation
+from lib.image_operations import ImageOperations
 from lib.kmeans_cluster_annotated_column_vertices import KmeansClusterAnnotatedColumnVertices
 from panoptes_client import Panoptes
 from redis import Redis
@@ -39,7 +39,7 @@ def run(log_level):
                  str(vertex_centroids_by_subject))
 
     queue = Queue(connection=Redis())
-    queue.enqueue(queue_perform_image_segmentation, vertex_centroids_by_subject)
+    queue.enqueue(ImageOperations.queue_perform_image_segmentation, vertex_centroids_by_subject)
 
 # TODO SEQUENCE:
 #
