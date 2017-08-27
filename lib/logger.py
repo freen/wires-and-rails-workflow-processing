@@ -1,6 +1,7 @@
+"""Configure file and console logger streams"""
 import logging
 
-def setup_logger(logger_name, file_name, log_level = logging.DEBUG):
+def setup_logger(logger_name, file_name, log_level=logging.DEBUG):
     """Configure file and console logger streams"""
     logger = logging.getLogger(logger_name)
     logger.setLevel(logging.DEBUG)

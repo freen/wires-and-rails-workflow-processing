@@ -2,9 +2,8 @@
 Interface to ocropus binaries for image row segmentation.
 """
 
-from lib.logger import setup_logger
-import settings
 from subprocess import Popen, PIPE
+from lib.logger import setup_logger
 
 class Ocropy:
     """

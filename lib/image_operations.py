@@ -17,7 +17,8 @@ class ImageOperations:
     annotations.
     """
 
-    def _logger(self):
+    @classmethod
+    def _logger(cls):
         return logging.getLogger(settings.APP_NAME)
 
     def fetch_subject_images_to_tmp(self, subject_ids):
@@ -29,7 +30,8 @@ class ImageOperations:
         for subject in subjects:
             locations_urls = list(subject.raw['locations'][0].values())
             subject_image_url = locations_urls[0]
-            self._logger().debug('Retrieving subject image for %s: %s', subject.id, subject_image_url)
+            self._logger().debug('Retrieving subject image for %s: %s', subject.id,
+                                 subject_image_url)
             local_filename, _headers = urllib.request.urlretrieve(subject_image_url)
             path = urlparse(subject_image_url).path
             ext = os.path.splitext(path)[1]
@@ -42,14 +44,14 @@ class ImageOperations:
     def perform_image_segmentation(self, vertex_centroids_by_subject):
         """Fetch subject images, split columns by centroids, row segmentation with Ocropy"""
         self._logger().debug('Received the following subject centroids for image segmentation: %s',
-                           str(vertex_centroids_by_subject))
+                             str(vertex_centroids_by_subject))
         subject_ids = vertex_centroids_by_subject.keys()
         image_path_by_subject_ids = self.fetch_subject_images_to_tmp(subject_ids)
 
         # Split subject images by vertex centroids
         split_subject_images = self._split_by_vertical_centroids(
-           image_path_by_subject_ids,
-           vertex_centroids_by_subject
+            image_path_by_subject_ids,
+            vertex_centroids_by_subject
         )
 
         for subject_id, column_image_paths in split_subject_images.items():
