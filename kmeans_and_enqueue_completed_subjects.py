@@ -8,56 +8,39 @@ Runner script. Define .env variables per .env.example and run e.g.
 
 import logging
 import settings
+from lib.logger import setup_logger
 from lib.image_operations import ImageOperations
 from lib.kmeans_cluster_annotated_column_vertices import KmeansClusterAnnotatedColumnVertices
 from panoptes_client import Panoptes
 from redis import Redis
 from rq import Queue
 
-class KmeansAndEnqueueCompletedSubjects:
+def run(log_level):
     """
     Query for completed subjects, calculate kmeans vertex centroids, fetch subject images, split
     columns by centroids, row segmentatino with Ocropy.
     """
+    logger = setup_logger(settings.APP_NAME, 'log/kmeans_and_enqueue_completed_subjects.log',
+                          log_level)
+    logger.debug("Running Wires and Rails Workflow Processor")
+    Panoptes.connect(username=settings.PANOPTES_USERNAME, password=settings.PANOPTES_PASSWORD)
 
-    def _setup_logger(self, log_level, file_name='log/kmeans_and_enqueue_completed_subjects.log'):
-        """Configure file and console logger streams"""
-        logger = logging.getLogger(settings.APP_NAME)
-        logger.setLevel(logging.DEBUG)
-        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    clusterer = KmeansClusterAnnotatedColumnVertices({
+        'project_id': settings.PROJECT_ID,
+        'workflow_id': settings.DOCUMENT_VERTICES_WORKFLOW_ID,
+        'subject_set_id': settings.DOCUMENT_VERTICES_SUBJECT_SET_ID,
+        'task_id': settings.DOCUMENT_VERTICES_WORKFLOW_TASK_ID
+    })
 
-        file_handler = logging.FileHandler(file_name)
-        file_handler.setLevel(log_level)
-        file_handler.setFormatter(formatter)
+    # Calculate vertex centroids
+    vertex_centroids_by_subject = clusterer.calculate_vertex_centroids()
 
-        console_handler = logging.StreamHandler()
-        console_handler.setLevel(log_level)
-        console_handler.setFormatter(formatter)
+    logger.debug('Enqueueing the following subject centroids for image segmentation: %s',
+                 str(vertex_centroids_by_subject))
 
-        logger.addHandler(file_handler)
-        logger.addHandler(console_handler)
-        return logger
-
-    def run(self, log_level):
-        """Run all processing tasks"""
-        logger = self._setup_logger(log_level)
-        logger.debug("Running Wires and Rails Workflow Processor")
-        Panoptes.connect(username=settings.PANOPTES_USERNAME, password=settings.PANOPTES_PASSWORD)
-
-        clusterer = KmeansClusterAnnotatedColumnVertices({
-            'project_id': settings.PROJECT_ID,
-            'workflow_id': settings.DOCUMENT_VERTICES_WORKFLOW_ID,
-            'subject_set_id': settings.DOCUMENT_VERTICES_SUBJECT_SET_ID,
-            'task_id': settings.DOCUMENT_VERTICES_WORKFLOW_TASK_ID
-        })
-
-        # Calculate vertex centroids
-        vertex_centroids_by_subject = clusterer.calculate_vertex_centroids()
-
-        logger.debug('Enqueueing the following subject centroids for image segmentation: %s',
-                     str(vertex_centroids_by_subject))
-        q = Queue(connection=Redis())
-        q.enqueue(ImageOperations.perform_image_segmentation, vertex_centroids_by_subject)
+    image_operations = ImageOperations()
+    q = Queue(connection=Redis())
+    q.enqueue(image_operations.perform_image_segmentation, vertex_centroids_by_subject)
 
 # TODO SEQUENCE:
 #
@@ -65,11 +48,10 @@ class KmeansAndEnqueueCompletedSubjects:
 # [ ] write to Panoptes metadata saying we queued the subject for image processing
 # [ ] add rq, redis daeman starters to dockerfile
 #  =  inside the rq arch
-#     [ ] move the vertical splitting logic in
+#     [x] move the vertical splitting logic in
 #     [ ] add the ocropy row segmenter
 #     [ ] create new subjects w/ new cropped images w/ retained metadata
 # [ ] revise such that we only pull & process subjects which haven't been retired / completed
 
 if __name__ == '__main__':
-    kmeans_and_enqueue_completed_subjects = KmeansAndEnqueueCompletedSubjects()
-    kmeans_and_enqueue_completed_subjects.run(logging.DEBUG)
+    run(logging.DEBUG)
