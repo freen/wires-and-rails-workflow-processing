@@ -1,0 +1,1 @@
+*/10 * * * * /usr/bin/python3 /app/kmeans_and_enqueue_completed_subjects.py

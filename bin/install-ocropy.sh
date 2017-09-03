@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-apt-get update
 apt-get -y install wget python-tk
 
 git clone https://github.com/tmbdev/ocropy.git
