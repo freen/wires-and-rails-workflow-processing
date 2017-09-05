@@ -38,7 +38,7 @@ def run(log_level):
     logger.debug('Enqueueing the following subject centroids for image segmentation: %s',
                  str(vertex_centroids_by_subject))
 
-    queue = Queue(connection=Redis())
+    queue = Queue(connection=Redis(host=settings.REDIS_HOST))
     queue.enqueue(ImageOperations.queue_perform_image_segmentation, vertex_centroids_by_subject)
 
 # TODO SEQUENCE:

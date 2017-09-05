@@ -10,6 +10,8 @@ load_dotenv(find_dotenv())
 
 APP_NAME = 'WiresRailsWorkflowProcessor'
 
+REDIS_HOST = 'redis'
+
 PANOPTES_USERNAME = os.environ.get("PANOPTES_USERNAME")
 PANOPTES_PASSWORD = os.environ.get("PANOPTES_PASSWORD")
 PROJECT_SLUG = os.environ.get("PROJECT_SLUG")
