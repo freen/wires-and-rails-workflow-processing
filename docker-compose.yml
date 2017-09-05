@@ -12,19 +12,20 @@ services:
         condition: on-failure
     networks:
       - webnet
-  visualizer:
-    image: dockersamples/visualizer:stable
-    ports:
-      - "8080:8080"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
     deploy:
       placement:
         constraints: [node.role == manager]
+  rq-worker:
+    build:
+      context: ./rq-worker
+      dockerfile: ./rq-worker/Dockerfile
     networks:
       - webnet
+    deploy:
+      placement:
+        constraints: [node.role == manager]
   redis:
-    image: redis
+    image: redis:latest
     ports:
       - "6379:6379"
     volumes:

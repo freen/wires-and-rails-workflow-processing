@@ -1,3 +1,4 @@
+devcron
 scipy
 panoptes-client
 python-dotenv
