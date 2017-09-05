@@ -1,6 +1,6 @@
 version: "3"
 services:
-  cron:
+  cron-and-queue:
     image: freen/wires-and-rails-workflow-processing:latest
     deploy:
       replicas: 1
@@ -10,15 +10,6 @@ services:
           memory: 500M
       restart_policy:
         condition: on-failure
-    networks:
-      - webnet
-    deploy:
-      placement:
-        constraints: [node.role == manager]
-  rq-worker:
-    build:
-      context: ./rq-worker
-      dockerfile: ./rq-worker/Dockerfile
     networks:
       - webnet
     deploy:
