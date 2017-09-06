@@ -39,16 +39,16 @@ def run(log_level):
                  str(vertex_centroids_by_subject))
 
     queue = Queue(connection=Redis(host=settings.REDIS_HOST))
-    queue.enqueue(ImageOperations.queue_perform_image_segmentation, vertex_centroids_by_subject)
+    queue.enqueue(ImageOperations.queue_image_for_segmentation, vertex_centroids_by_subject)
 
 # TODO SEQUENCE:
 #
 # [x] after kmeans clustering, shove the result into a queue (rq zB https://github.com/nvie/rq)
 # [ ] write to Panoptes metadata saying we queued the subject for image processing
-# [ ] add rq, redis daeman starters to dockerfile
+# [x] add rq, redis daeman starters to dockerfile
 #  =  inside the rq arch
 #     [x] move the vertical splitting logic in
-#     [ ] add the ocropy row segmenter
+#     [x] add the ocropy row segmenter
 #     [ ] create new subjects w/ new cropped images w/ retained metadata
 # [ ] revise such that we only pull & process subjects which haven't been retired / completed
 

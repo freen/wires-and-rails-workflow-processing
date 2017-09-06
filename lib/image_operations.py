@@ -2,7 +2,6 @@
 Utility for splitting original subject images by vertex centroids derived from user annotations.
 """
 
-import logging
 import os
 import urllib.request
 from urllib.parse import urlparse
@@ -25,11 +24,13 @@ class ImageOperations:
         self._logger = logger
 
     @classmethod
-    def queue_perform_image_segmentation(cls, vertex_centroids_by_subject):
+    def queue_image_for_segmentation(cls, vertex_centroids_by_subject):
+        """Given subject IDs and vertex centroids, fetch subject images and perform segmentation"""
         logger = setup_logger(cls.LOGGER_NAME, 'log/image_operations.log')
         image_operations = ImageOperations(logger)
         image_operations.perform_image_segmentation(vertex_centroids_by_subject)
 
+    # TODO generalize naming and breakout function, this also pushes new subjects
     def perform_image_segmentation(self, vertex_centroids_by_subject):
         """Fetch subject images, split columns by centroids, row segmentation with Ocropy"""
         self._logger.debug('Received the following subject centroids for image segmentation: %s',
@@ -45,9 +46,14 @@ class ImageOperations:
 
         ocropy = Ocropy(self._logger)
 
+        row_paths_by_subject_id = {}
+
         for subject_id, column_image_paths in split_subject_images.items():
-            for image_file_path in column_image_paths:
-                ocropy.perform_row_segmentation(image_file_path)
+            for image_path in column_image_paths:
+                # TODO make sure all doesn't choke if one row segmentation chokes
+                # TODO make sure we can know if it choked, e.g. error log
+                row_paths_by_subject_id[subject_id] = ocropy.perform_row_segmentation(image_path)
+
 
     def _fetch_subject_images_to_tmp(self, subject_ids):
         """Given subject_ids, fetch subject image files to tmp dir storage and return the paths"""
