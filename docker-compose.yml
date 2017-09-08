@@ -2,6 +2,8 @@ version: "3"
 services:
   cron-and-queue:
     image: freen/wires-and-rails-workflow-processing:latest
+    volumes:
+      - .:/app
     deploy:
       replicas: 1
       resources:
