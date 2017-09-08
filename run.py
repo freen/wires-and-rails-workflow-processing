@@ -27,9 +27,9 @@ def run(log_level):
 
     clusterer = KmeansClusterAnnotatedColumnVertices({
         'project_id': settings.PROJECT_ID,
-        'workflow_id': settings.DOCUMENT_VERTICES_WORKFLOW_ID,
-        'subject_set_id': settings.DOCUMENT_VERTICES_SUBJECT_SET_ID,
-        'task_id': settings.DOCUMENT_VERTICES_WORKFLOW_TASK_ID
+        'workflow_id': settings.WORKFLOW_ID_DOCUMENT_VERTICES,
+        'subject_set_id': settings.SUBJECT_SET_ID_DOCUMENT_VERTICES,
+        'task_id': settings.TASK_ID_DOCUMENT_VERTICES_WORKFLOW
     })
 
     # Calculate vertex centroids

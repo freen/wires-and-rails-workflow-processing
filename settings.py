@@ -17,8 +17,11 @@ PANOPTES_PASSWORD = os.environ.get("PANOPTES_PASSWORD")
 PROJECT_SLUG = os.environ.get("PROJECT_SLUG")
 PROJECT_ID = os.environ.get("PROJECT_ID")
 
-DOCUMENT_VERTICES_WORKFLOW_ID = 3548 # "Railroads_Mark_Image_Type"
-DOCUMENT_VERTICES_SUBJECT_SET_ID = 8339 # "pages_raw"
-DOCUMENT_VERTICES_WORKFLOW_TASK_ID = 'T1' # Only column demarcation task
+SUBJECT_SET_ID_DOCUMENT_VERTICES = 8339        # "pages_raw"
+SUBJECT_SET_ID_PAGES_ROWS_UNCLASSIFIED = 14618 # "pages_rows_unclassified"
+
+TASK_ID_DOCUMENT_VERTICES_WORKFLOW = 'T1'      # (Column demarcation task.)
+
+WORKFLOW_ID_DOCUMENT_VERTICES = 3548           # "Railroads_Mark_Image_Type"
 
 TEMPDIR = '/tmp' if platform.system() == 'Darwin' else tempfile.gettempdir()

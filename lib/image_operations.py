@@ -10,8 +10,10 @@ import settings
 from lib.logger import setup_logger
 from lib.ocropy import Ocropy
 from PIL import Image
-from panoptes_client import Subject
+from panoptes_client import Project, Subject, SubjectSet
 
+# TODO generalize naming, this also pushes new subjects
+# TODO e.g. call this "QueueOperations"
 class ImageOperations:
     """
     Utility for splitting original subject images by vertex centroids derived from user
@@ -23,8 +25,6 @@ class ImageOperations:
     def __init__(self, logger):
         self._logger = logger
 
-    # TODO generalize naming and breakout function, this also pushes new subjects
-    # TODO e.g. call this "QueueOperations" and add the function of pushing new subjects
     @classmethod
     def queue_new_subject_creation(cls, subject_id, vertex_centroids):
         """
@@ -34,7 +34,32 @@ class ImageOperations:
         logger = setup_logger(cls.LOGGER_NAME, 'log/image_operations.log')
         image_ops = ImageOperations(logger)
         row_paths_by_column = image_ops.perform_image_segmentation(subject_id, vertex_centroids)
+        image_ops.push_new_row_subjects(subject_id, row_paths_by_column)
+
+    def push_new_row_subjects(self, source_subject_id, row_paths_by_column):
+        """
+        Given image paths for the new column-indexed rows (row_paths_by_column), push new
+        unclassified row subjects to the appropriate subject set, with metadata references to the
+        source subject (source_subject_id) and column.
+        """
+        project = Project.find(settings.PROJECT_ID)
+        # subject = Subject.find(source_subject_id)
+        subject_set_unclassified_rows = SubjectSet.find(
+            settings.SUBJECT_SET_ID_PAGES_ROWS_UNCLASSIFIED
+        )
+
         # TODO w/ paths and old subject metadata, push new subjects to Panoptes API
+        for column_index, row_paths in row_paths_by_column.items():
+            self._logger.debug('Creating %d new row subjects for column index %d for subject %s',
+                               len(row_paths), column_index, source_subject_id)
+            for row_path in row_paths:
+                new_row_subject = Subject()
+                new_row_subject.links.project = project
+                new_row_subject.metadata['source_document_subject_id'] = source_subject_id
+                new_row_subject.metadata['source_document_column_index'] = column_index
+                new_row_subject.add_location(row_path)
+
+                subject_set_unclassified_rows.add(new_row_subject)
 
     def perform_image_segmentation(self, subject_id, vertex_centroids):
         """Fetch subject image, split columns by centroids, row segmentation with Ocropy"""
@@ -58,13 +83,9 @@ class ImageOperations:
 
         return row_paths_by_column
 
-
     def _fetch_subject_image_to_tmp(self, subject_id):
         """Given subject_id, fetch subject image files to tmp dir storage and return the paths"""
-        subject = Subject.where(scope='project', project_id=settings.PROJECT_ID,
-                                workflow_id=settings.DOCUMENT_VERTICES_WORKFLOW_ID,
-                                subject_id=subject_id)
-        # TODO some kind of `first` needed here?
+        subject = Subject.find(subject_id)
         locations_urls = list(subject.raw['locations'][0].values())
         subject_image_url = locations_urls[0]
         self._logger.debug('Retrieving subject image for %s: %s', subject.id,

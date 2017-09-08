@@ -20,10 +20,11 @@ class Ocropy:
     def perform_row_segmentation(self, image_file_path):
         """Run row segmentation on the provided path and return the new row absolute filepaths"""
         if not self._execute_row_segmentation_command(image_file_path):
-            return False # TODO react to failure...
+            # TODO throw exception so rq puts in failed queue / other recovery strategy
+            return False
         name, _ext = os.path.splitext(image_file_path)
-        _result_directory = '/tmp/%s/' % name
-        return [_result_directory + file for file in os.listdir(_result_directory)]
+        # Conveniently, the name and the resulting ocropus directory have the exact same name
+        return [os.path.join(name, file) for file in os.listdir(name)]
 
     def _try_subprocess_cmd(self, cmd):
         self._logger.debug('Running cmd in subprocess: %s', str(cmd))
