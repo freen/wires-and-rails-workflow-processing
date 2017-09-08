@@ -1,2 +1,1 @@
 #*/10 * * * * /usr/bin/python3 /app/run.py
-*/2 * * * * /usr/bin/python3 /app/run.py

@@ -48,18 +48,23 @@ class ImageOperations:
             settings.SUBJECT_SET_ID_PAGES_ROWS_UNCLASSIFIED
         )
 
+        new_row_subjects = []
+
         # TODO w/ paths and old subject metadata, push new subjects to Panoptes API
         for column_index, row_paths in row_paths_by_column.items():
             self._logger.debug('Creating %d new row subjects for column index %d for subject %s',
                                len(row_paths), column_index, source_subject_id)
             for row_path in row_paths:
-                new_row_subject = Subject()
-                new_row_subject.links.project = project
-                new_row_subject.metadata['source_document_subject_id'] = source_subject_id
-                new_row_subject.metadata['source_document_column_index'] = column_index
-                new_row_subject.add_location(row_path)
+                new_subject = Subject()
+                new_subject.links.project = project
+                new_subject.metadata['source_document_subject_id'] = source_subject_id
+                new_subject.metadata['source_document_column_index'] = column_index
+                new_subject.add_location(row_path)
+                new_subject.save()
 
-                subject_set_unclassified_rows.add(new_row_subject)
+                new_row_subjects.append(new_subject)
+
+        subject_set_unclassified_rows.add(new_row_subjects)
 
     def perform_image_segmentation(self, subject_id, vertex_centroids):
         """Fetch subject image, split columns by centroids, row segmentation with Ocropy"""
