@@ -39,7 +39,9 @@ def run(log_level):
                  str(vertex_centroids_by_subject))
 
     queue = Queue(connection=Redis(host=settings.REDIS_HOST))
-    queue.enqueue(ImageOperations.queue_image_for_segmentation, vertex_centroids_by_subject)
+
+    for subject_id, vertex_centroids in vertex_centroids_by_subject.items():
+        queue.enqueue(ImageOperations.queue_new_subject_creation, subject_id, vertex_centroids)
 
 # TODO SEQUENCE:
 #
