@@ -11,13 +11,13 @@ COPY requirements.txt /tmp/pip3-requirements.txt
 RUN pip3 install -r /tmp/pip3-requirements.txt
 
 # Ocropy / Python 2
-RUN mkdir -p /app && apt-get -y install wget python-tk && git clone https://github.com/tmbdev/ocropy.git /app/ocropy
-COPY en-default.pyrnn.gz /tmp/en-default.pyrnn.gz
-COPY bin/install-ocropy.sh /tmp/install-ocropy.sh
-RUN bash /tmp/install-ocropy.sh
+RUN apt-get -y install python-tk
+RUN mkdir -p /app && git clone https://github.com/tmbdev/ocropy.git /app/ocropy
+COPY en-default.pyrnn.gz /app/ocropy/models/en-default.pyrnn.gz
+WORKDIR /app/ocropy
+RUN python setup.py install && pip install -r requirements.txt
 
-# RUN touch /app/log/cron.log
-
+WORKDIR /app
 ADD . /app
 
 ENTRYPOINT ["/usr/bin/supervisord", "-n"]
