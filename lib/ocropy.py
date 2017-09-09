@@ -44,6 +44,6 @@ class Ocropy:
         nlbin_cmd = ['ocropus-nlbin', image_file_path]
         if not self._try_subprocess_cmd(nlbin_cmd):
             return False
-        gpageseg_cmd = ['ocropus-gpageseg', '-d', '--maxcolseps=0', '--maxseps=0', '--hscale=100',
-                        image_file_path]
+        gpageseg_cmd = ['ocropus-gpageseg', '-n', '-d', '--maxcolseps=0', '--maxseps=0',
+                        '--hscale=100', image_file_path]
         return self._try_subprocess_cmd(gpageseg_cmd)
