@@ -62,8 +62,8 @@ class QueueOperations:
             'threshold',
             image_path, upscaled_size[0], upscaled_size[1], width, height
         )
-        image.resize(upscaled_size)
-        image.save(image_path)
+        resized = image.resize(upscaled_size)
+        resized.save(image_path)
         return True
 
     def push_new_row_subjects(self, source_subject_id, row_paths_by_column):
