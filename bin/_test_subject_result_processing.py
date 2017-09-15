@@ -8,23 +8,23 @@ from numpy import array
 from lib.queue_operations import QueueOperations
 from lib.logger import setup_logger
 
-def run_segmentation_test():
-    """Run segmentation test on pre-existing local file"""
-    subject_id = '5823822'
-    subject_image_path = '/tmp/5823822.png'
-    vertex_centroids = array(
-        [579.69410197, 1121.70011393, 1637.67895508, 2169.64591471, 2706.0571696]
-    )
-    logger = setup_logger('TestLogger', 'log/test_segmentation.log')
-    queue_ops = QueueOperations(logger)
-    column_image_paths = queue_ops.perform_column_segmentation(
-        subject_id,
-        subject_image_path,
-        vertex_centroids
-    )
-    for column_image_path in column_image_paths:
-        queue_ops.upscale_small_images(column_image_path)
-    queue_ops.perform_row_segmentation(column_image_paths)
+# def run_segmentation_test():
+#     """Run segmentation test on pre-existing local file"""
+#     subject_id = '5823822'
+#     subject_image_path = '/tmp/5823822.png'
+#     vertex_centroids = array(
+#         [579.69410197, 1121.70011393, 1637.67895508, 2169.64591471, 2706.0571696]
+#     )
+#     logger = setup_logger('TestLogger', 'log/test_segmentation.log')
+#     queue_ops = QueueOperations(logger)
+#     column_image_paths = queue_ops.perform_column_segmentation(
+#         subject_id,
+#         subject_image_path,
+#         vertex_centroids
+#     )
+#     for column_image_path in column_image_paths:
+#         queue_ops.upscale_small_images(column_image_path)
+#     queue_ops.perform_row_segmentation(column_image_paths)
 
 def run_full_image_slicing_test():
     """Run image slicing test"""
@@ -259,6 +259,7 @@ def run_subject_push_test():
     queue_ops.push_new_row_subjects(subject_id, row_paths_by_column)
 
 if __name__ == '__main__':
-    run_segmentation_test()
+    pass
+    # run_segmentation_test()
     # run_full_image_slicing_test()
     # run_subject_push_test()
