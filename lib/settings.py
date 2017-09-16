@@ -18,7 +18,7 @@ PROJECT_SLUG = os.environ.get("PROJECT_SLUG")
 PROJECT_ID = os.environ.get("PROJECT_ID")
 
 SUBJECT_SET_ID_DOCUMENT_VERTICES = 8339        # "pages_raw"
-SUBJECT_SET_ID_PAGES_ROWS_UNCLASSIFIED = 14623 # "pages_rows_unclassified"
+SUBJECT_SET_ID_PAGES_ROWS_UNCLASSIFIED = 14804 # "pages_rows_unclassified"
 
 TASK_ID_DOCUMENT_VERTICES_WORKFLOW = 'T1'      # (Column demarcation task.)
 
