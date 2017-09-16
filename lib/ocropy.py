@@ -4,7 +4,8 @@ Interface to ocropus binaries for image row segmentation.
 
 import subprocess
 import os
-from lib.logger import setup_logger
+
+from .logger import setup_logger
 
 class Ocropy:
     """
@@ -19,11 +20,13 @@ class Ocropy:
 
     def perform_row_segmentation(self, image_file_path):
         """Run row segmentation on the provided path and return the new row absolute filepaths"""
-        if not self._execute_row_segmentation_command(image_file_path):
+        success = self._execute_row_segmentation_command(image_file_path):
+        self._cleanup()
+        if not success:
             # TODO throw exception so rq puts in failed queue / other recovery strategy
             return False
         name, _ext = os.path.splitext(image_file_path)
-        # Conveniently, the name and the resulting ocropus directory have the exact same name
+        # The name and the resulting ocropus directory have the exact same name
         return [os.path.join(name, file) for file in os.listdir(name)]
 
     def _try_subprocess_cmd(self, cmd):
@@ -40,10 +43,14 @@ class Ocropy:
             return False
 
     def _execute_row_segmentation_command(self, image_file_path):
-        # TODO issue with images less than 600px wide; need to upscale smaller images
         nlbin_cmd = ['ocropus-nlbin', image_file_path]
         if not self._try_subprocess_cmd(nlbin_cmd):
             return False
         gpageseg_cmd = ['ocropus-gpageseg', '-n', '-d', '--maxcolseps=0', '--maxseps=0',
                         '--hscale=100', image_file_path]
         return self._try_subprocess_cmd(gpageseg_cmd)
+
+    def _cleanup(self):
+        self._try_subprocess_cmd(['rm', '-f', '_1thresh.png', '_2grad.png', '_3seps.png',
+                                 '_4seps.png', '_cleaned.png', '_colwsseps.png', '_lineseeds.png',
+                                 '_seeds.png'])

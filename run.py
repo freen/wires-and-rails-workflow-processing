@@ -7,10 +7,12 @@ Runner script. Define .env variables per .env.example and run e.g.
 """
 
 import logging
-import settings
+
+from lib import settings
 from lib.logger import setup_logger
 from lib.queue_operations import QueueOperations
 from lib.kmeans_cluster_annotated_column_vertices import KmeansClusterAnnotatedColumnVertices
+
 from panoptes_client import Panoptes, Subject
 from redis import Redis
 from rq import Queue

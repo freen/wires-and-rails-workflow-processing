@@ -4,7 +4,9 @@ and finds the vertex centroids per subject using k-means clustering.
 """
 
 import logging
-import settings
+
+from . import settings
+
 from panoptes_client import Workflow, Classification
 from numpy import array, median, std
 from scipy.cluster.vq import kmeans, whiten

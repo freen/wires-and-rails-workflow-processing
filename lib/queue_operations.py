@@ -6,9 +6,10 @@ import os
 import urllib.request
 from urllib.parse import urlparse
 
-import settings
-from lib.logger import setup_logger
-from lib.ocropy import Ocropy
+from . import settings
+from .logger import setup_logger
+from .ocropy import Ocropy
+
 from PIL import Image
 from panoptes_client import Project, Subject, SubjectSet
 
