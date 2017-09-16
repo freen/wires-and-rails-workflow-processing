@@ -5,13 +5,12 @@ Utility for splitting original subject images by vertex centroids derived from u
 import os
 import urllib.request
 from urllib.parse import urlparse
+from PIL import Image
+from panoptes_client import Project, Subject, SubjectSet
 
 from . import settings
 from .logger import setup_logger
 from .ocropy import Ocropy
-
-from PIL import Image
-from panoptes_client import Project, Subject, SubjectSet
 
 class QueueOperations:
     """

@@ -20,7 +20,7 @@ class Ocropy:
 
     def perform_row_segmentation(self, image_file_path):
         """Run row segmentation on the provided path and return the new row absolute filepaths"""
-        success = self._execute_row_segmentation_command(image_file_path):
+        success = self._execute_row_segmentation_command(image_file_path)
         self._cleanup()
         if not success:
             # TODO throw exception so rq puts in failed queue / other recovery strategy
@@ -52,5 +52,5 @@ class Ocropy:
 
     def _cleanup(self):
         self._try_subprocess_cmd(['rm', '-f', '_1thresh.png', '_2grad.png', '_3seps.png',
-                                 '_4seps.png', '_cleaned.png', '_colwsseps.png', '_lineseeds.png',
-                                 '_seeds.png'])
+                                  '_4seps.png', '_cleaned.png', '_colwsseps.png', '_lineseeds.png',
+                                  '_seeds.png'])

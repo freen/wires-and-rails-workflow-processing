@@ -4,12 +4,11 @@ and finds the vertex centroids per subject using k-means clustering.
 """
 
 import logging
-
-from . import settings
-
 from panoptes_client import Workflow, Classification
 from numpy import array, median, std
 from scipy.cluster.vq import kmeans, whiten
+
+from . import settings
 
 class KmeansClusterAnnotatedColumnVertices:
     """

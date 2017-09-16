@@ -3,10 +3,12 @@
 """
 Useful for synchronously debugging queue operations.
 """
+
+from numpy import array
+
 import sys
 sys.path.insert(0, "..")
 
-from numpy import array
 from lib.queue_operations import QueueOperations
 from lib.logger import setup_logger
 
