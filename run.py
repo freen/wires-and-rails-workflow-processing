@@ -3,7 +3,7 @@
 """
 Runner script. Define .env variables per .env.example and run e.g.
 
-   python3 main.py
+   python3 run.py
 """
 
 import logging
@@ -54,17 +54,6 @@ def run(log_level):
         queue.enqueue(QueueOperations.queue_new_subject_creation, subject_id,
                       vertex_centroids_by_subject[subject_id], timeout=2*60*60)
         QueueOperations.flag_subject_as_queued(subject)
-
-# TODO SEQUENCE:
-#
-# [x] after kmeans clustering, shove the result into a queue (rq zB https://github.com/nvie/rq)
-# [ ] write to Panoptes metadata saying we queued the subject for image processing
-# [x] add rq, redis daeman starters to dockerfile
-#  =  inside the rq arch
-#     [x] move the vertical splitting logic in
-#     [x] add the ocropy row segmenter
-#     [ ] create new subjects w/ new cropped images w/ retained metadata
-# [ ] revise such that we only pull & process subjects which haven't been retired / completed
 
 if __name__ == '__main__':
     run(logging.DEBUG)
