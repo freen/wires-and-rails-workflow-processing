@@ -11,7 +11,7 @@ import settings
 from lib.logger import setup_logger
 from lib.queue_operations import QueueOperations
 from lib.kmeans_cluster_annotated_column_vertices import KmeansClusterAnnotatedColumnVertices
-from panoptes_client import Panoptes
+from panoptes_client import Panoptes, Subject
 from redis import Redis
 from rq import Queue
 
@@ -44,6 +44,11 @@ def run(log_level):
     queue = Queue(connection=Redis(host=settings.REDIS_HOST))
 
     for subject_id in retired_subject_ids:
+        subject = Subject.find(subject_id)
+        if settings.METADATA_KEY_ALREADY_PROCESSED in subject.metadata and \
+           subject.metadata[settings.METADATA_KEY_ALREADY_PROCESSED]:
+            logger.debug('Skipping subject id %s; already processed.', subject_id)
+            continue
         queue.enqueue(QueueOperations.queue_new_subject_creation, subject_id,
                       vertex_centroids_by_subject[subject_id])
 

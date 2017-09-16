@@ -24,4 +24,6 @@ TASK_ID_DOCUMENT_VERTICES_WORKFLOW = 'T1'      # (Column demarcation task.)
 
 WORKFLOW_ID_DOCUMENT_VERTICES = 3548           # "Railroads_Mark_Image_Type"
 
+METADATA_KEY_ALREADY_PROCESSED = 'WARWP_subject_processed'
+
 TEMPDIR = '/tmp' if platform.system() == 'Darwin' else tempfile.gettempdir()

@@ -47,7 +47,7 @@ class QueueOperations:
     @classmethod
     def flag_subject_as_processed(cls, subject):
         """Write to subject metadata that this subject has been been processed"""
-        subject.metadata['segmentation_completed'] = True
+        subject.metadata[settings.METADATA_KEY_ALREADY_PROCESSED] = True
         subject.save()
 
     def upscale_small_images(self, image_path):
