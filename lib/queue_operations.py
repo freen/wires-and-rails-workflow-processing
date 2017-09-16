@@ -31,7 +31,8 @@ class QueueOperations:
         """
         logger = setup_logger(cls.LOGGER_NAME, 'log/queue_operations.log')
         queue_ops = QueueOperations(logger)
-        subject_image_path = queue_ops.fetch_subject_image_to_tmp(subject_id)
+        subject = Subject.find(subject_id)
+        subject_image_path = queue_ops.fetch_subject_image_to_tmp(subject)
         column_image_paths = queue_ops.perform_column_segmentation(
             subject_id,
             subject_image_path,
@@ -41,6 +42,13 @@ class QueueOperations:
             queue_ops.upscale_small_images(column_image_path)
         row_paths_by_column = queue_ops.perform_row_segmentation(column_image_paths)
         queue_ops.push_new_row_subjects(subject_id, row_paths_by_column)
+        QueueOperations.flag_subject_as_processed(subject)
+
+    @classmethod
+    def flag_subject_as_processed(cls, subject):
+        """Write to subject metadata that this subject has been been processed"""
+        subject.metadata['segmentation_completed'] = True
+        subject.save()
 
     def upscale_small_images(self, image_path):
         """
@@ -123,9 +131,8 @@ class QueueOperations:
             row_paths_by_column[index] = ocropy.perform_row_segmentation(image_path)
         return row_paths_by_column
 
-    def fetch_subject_image_to_tmp(self, subject_id):
-        """Given subject_id, fetch subject image files to tmp dir storage and return the paths"""
-        subject = Subject.find(subject_id)
+    def fetch_subject_image_to_tmp(self, subject):
+        """Given subject, fetch subject image files to tmp dir storage and return the paths"""
         locations_urls = list(subject.raw['locations'][0].values())
         subject_image_url = locations_urls[0]
         self._logger.info('Retrieving subject image for %s: %s', subject.id,

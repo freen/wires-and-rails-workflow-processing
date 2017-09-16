@@ -1,5 +1,6 @@
 [DESIGN]
 min-public-methods=1
+max-attributes=8
 
 [MISCELLANEOUS]
 # Don't complain about TODO comments

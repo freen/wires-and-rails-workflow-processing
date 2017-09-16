@@ -18,6 +18,7 @@ class KmeansClusterAnnotatedColumnVertices:
     def __init__(self, project_metadata):
         self._project_metadata = project_metadata
         self._logger = logging.getLogger(settings.APP_NAME)
+        self._hydrated = False
 
         # Populated by _load_data()
         self._annotations_by_task_and_subject = {}
@@ -28,17 +29,41 @@ class KmeansClusterAnnotatedColumnVertices:
         self._column_annotations_by_subject = {}
         self._vertex_centroids_by_subject = {}
 
+    def calculate_vertex_centroids(self):
+        """
+        Collect all column vertex classification annotations per subject and calculate vertex
+        centroids using k-means clustering.
+        """
+        self._hydrate()
+        self._normalize_column_set_annotations()
+        self._calculate_kmeans_of_column_set_annotations()
+        return self._vertex_centroids_by_subject
+
+    def retired_subject_ids(self):
+        """
+        Derive this value (not available in the API) by comparing classification counts to the
+        configured subject retirement classification count. Must call
+        """
+        self._hydrate()
+        retirement_classification_count = self._workflow.retirement['options']['count']
+        return [id for id in self._column_annotations_by_subject
+                if len(self._column_annotations_by_subject[id]) >= retirement_classification_count]
+
+    def _hydrate(self):
+        if self._hydrated:
+            return None
+        self._fetch_classification_data()
+        self._collect_column_set_annotations_by_subject()
+        self._hydrated = True
+
     def _fetch_classification_data(self):
         """Fetches classification data from Panoptes API based on project_metadata criteria"""
-        self._load_data()
-        self._structure_classification_data()
-
-    def _load_data(self):
-        self._logger.debug("Loading workflow %s", str(self._project_metadata['workflow_id']))
         self._workflow = Workflow.find(self._project_metadata['workflow_id'])
         self._load_classification_data()
+        self._structure_classification_data()
 
-    # TODO only pull subjects which haven't been retired / completed
+    # TODO pull retired subjects from the workflow which do not have the flag, and modify this query
+    #      to pull classifications for those subjects
     def _load_classification_data(self):
         classification_kwargs = {
             'scope': 'project',
@@ -65,16 +90,6 @@ class KmeansClusterAnnotatedColumnVertices:
                     if subject_id not in self._annotations_by_task_and_subject[task_id]:
                         self._annotations_by_task_and_subject[task_id][subject_id] = []
                     self._annotations_by_task_and_subject[task_id][subject_id].append(annotation)
-
-    def calculate_vertex_centroids(self):
-        """
-        Collect all column vertex classification annotations per subject and calculate vertex
-        centroids using k-means clustering.
-        """
-        self._fetch_classification_data()
-        self._collect_column_set_annotations_by_subject()
-        self._normalize_column_set_annotations()
-        return self._calculate_kmeans_of_column_set_annotations()
 
     def _collect_column_set_annotations_by_subject(self):
         task_id = self._project_metadata['task_id']
@@ -113,7 +128,3 @@ class KmeansClusterAnnotatedColumnVertices:
             self._logger.debug('For subject %s, cluster centroids: %s', subject_id,
                                str(dewhitened_kmeans))
             self._vertex_centroids_by_subject[subject_id] = dewhitened_kmeans
-            # book = array((whitened[0],whitened[2]))
-            # kmeans_codebook, distortion = kmeans(whitened, book)
-            # self._vertex_centroids_by_subject[subject_id] = (kmeans_codebook * std_dev)[-1]
-        return self._vertex_centroids_by_subject

@@ -34,14 +34,18 @@ def run(log_level):
 
     # Calculate vertex centroids
     vertex_centroids_by_subject = clusterer.calculate_vertex_centroids()
+    retired_subject_ids = clusterer.retired_subject_ids()
 
-    logger.debug('Enqueueing the following subject centroids for image segmentation: %s',
+    logger.debug('Retrieved the following subject centroids for image segmentation: %s',
                  str(vertex_centroids_by_subject))
+
+    logger.debug('Enqueuing the following retired subjects: %s', str(retired_subject_ids))
 
     queue = Queue(connection=Redis(host=settings.REDIS_HOST))
 
-    for subject_id, vertex_centroids in vertex_centroids_by_subject.items():
-        queue.enqueue(QueueOperations.queue_new_subject_creation, subject_id, vertex_centroids)
+    for subject_id in retired_subject_ids:
+        queue.enqueue(QueueOperations.queue_new_subject_creation, subject_id,
+                      vertex_centroids_by_subject[subject_id])
 
 # TODO SEQUENCE:
 #
