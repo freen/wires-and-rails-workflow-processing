@@ -53,6 +53,7 @@ def run(log_level):
             continue
         queue.enqueue(QueueOperations.queue_new_subject_creation, subject_id,
                       vertex_centroids_by_subject[subject_id], timeout=2*60*60)
+        QueueOperations.flag_subject_as_queued(subject)
 
 # TODO SEQUENCE:
 #

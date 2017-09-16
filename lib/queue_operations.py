@@ -42,10 +42,9 @@ class QueueOperations:
             queue_ops.upscale_small_images(column_image_path)
         row_paths_by_column = queue_ops.perform_row_segmentation(column_image_paths)
         queue_ops.push_new_row_subjects(subject_id, row_paths_by_column)
-        QueueOperations.flag_subject_as_processed(subject)
 
     @classmethod
-    def flag_subject_as_processed(cls, subject):
+    def flag_subject_as_queued(cls, subject):
         """Write to subject metadata that this subject has been been processed"""
         subject.metadata[settings.METADATA_KEY_ALREADY_PROCESSED] = True
         subject.save()
