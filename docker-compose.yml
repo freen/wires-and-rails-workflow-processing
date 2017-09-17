@@ -12,13 +12,14 @@ services:
           memory: 500M
       restart_policy:
         condition: on-failure
+      placement:
+        constraints: [node.role == manager]
     networks:
       - webnet
     depends_on:
       - redis
-    deploy:
-      placement:
-        constraints: [node.role == manager]
+    ports:
+      - "9181:9181" # rq-dashboard
   redis:
     image: redis:latest
     ports:
@@ -28,20 +29,6 @@ services:
     deploy:
       placement:
         constraints: [node.role == manager]
-    networks:
-      - webnet
-  rq-dashboard:
-    image: robbieclarken/lightweight-rq-dashboard
-    command: rq-dashboard -H redis
-    depends_on:
-      - redis
-    ports:
-      - "9181:9181"
-    deploy:
-      placement:
-        constraints: [node.role == manager]
-      restart_policy:
-        condition: on-failure
     networks:
       - webnet
 networks:

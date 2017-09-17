@@ -19,4 +19,4 @@ subject_ids = ['5823821', '5823822']
 for id in subject_ids:
     subject = Subject.find(id)
     subject.metadata[settings.METADATA_KEY_ALREADY_PROCESSED] = False
-    subject.save
+    subject.save()
