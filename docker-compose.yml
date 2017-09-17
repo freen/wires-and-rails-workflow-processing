@@ -6,10 +6,6 @@ services:
       - .:/app
     deploy:
       replicas: 1
-      resources:
-        limits:
-          cpus: "1"
-          memory: 500M
       restart_policy:
         condition: on-failure
       placement:
@@ -20,6 +16,7 @@ services:
       - redis
     ports:
       - "9181:9181" # rq-dashboard
+    env_file: .env
   redis:
     image: redis:latest
     ports:
