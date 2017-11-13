@@ -6,4 +6,3 @@ Pillow
 redis
 rq
 rq-dashboard
-progressbar2
