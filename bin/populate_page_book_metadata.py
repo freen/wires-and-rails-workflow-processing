@@ -20,22 +20,24 @@ skipped = []
 target_fields = ['book', 'page']
 for subject in subject_set.subjects:
 
-	# Skip already populated
-	for field in target_fields:
-		if field in subject.metadata and subject.metadata[field] is not None:
-			skipped.append(subject.id)
-			next
+    # Skip already populated
+    for field in target_fields:
+        if field in subject.metadata and subject.metadata[field] is not None:
+            skipped.append(subject.id)
+            next
 
-	# Populate
-	subject_model = Subject(subject)
-	subject.metadata['book'] = subject_model['book']
-	subject.metadata['page'] = subject_model['page']
-	for field in target_fields:
-		if subject.metadata[field] is None:
-			print("WARN: None '%s' for subject %d and filepath %s" % field, subject.id, subject.metadata['filepath'])
+    # Populate
+    subject_model = Subject(subject)
+    subject.metadata['book'] = subject_model['book']
+    subject.metadata['page'] = subject_model['page']
+    for field in target_fields:
+        if subject.metadata[field] is None:
+            print("WARN: None '%s' for subject %d and filepath %s" % field, subject.id,
+                subject.metadata['filepath'])
 
-	subject.save()
-	i += 1
-	bar.update(i)
+    subject.save()
+    i += 1
+    bar.update(i)
 
-print("INFO: Skipped %d subjects because one of target fields (%s) was already defined: %s" % len(skipped), ", ".join(target_fields), ", ".join(skipped))
+print("INFO: Skipped %d subjects because one of target fields (%s) was already defined: %s"
+    % len(skipped), ", ".join(target_fields), ", ".join(skipped))
