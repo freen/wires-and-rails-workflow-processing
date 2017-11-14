@@ -7,7 +7,7 @@ import re
 Model class for performing subject operations.
 """
 
-class Subject(dict):
+class SubjectModel(dict):
 	"""
 	Model class for performing subject operations.
 	"""
