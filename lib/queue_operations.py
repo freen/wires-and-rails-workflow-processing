@@ -41,7 +41,7 @@ class QueueOperations:
         for column_image_path in column_image_paths:
             queue_ops.upscale_small_images(column_image_path)
         row_paths_by_column = queue_ops.perform_row_segmentation(column_image_paths)
-        queue_ops.push_new_row_subjects(subject_id, row_paths_by_column)
+        queue_ops.push_new_row_subjects(subject, row_paths_by_column)
 
     @classmethod
     def flag_subject_as_queued(cls, subject):
@@ -73,14 +73,14 @@ class QueueOperations:
         resized.save(image_path)
         return True
 
-    def push_new_row_subjects(self, source_subject_id, row_paths_by_column):
+    def push_new_row_subjects(self, source_subject, row_paths_by_column):
         """
         Given image paths for the new column-indexed rows (row_paths_by_column), push new
         unclassified row subjects to the appropriate subject set, with metadata references to the
-        source subject (source_subject_id) and column.
+        source subject and column.
         """
         project = Project.find(settings.PROJECT_ID)
-        # subject = Subject.find(source_subject_id)
+        # subject = Subject.find(source_subject.id)
         subject_set_unclassified_rows = SubjectSet.find(
             settings.SUBJECT_SET_ID_PAGES_ROWS_UNCLASSIFIED
         )
@@ -90,11 +90,14 @@ class QueueOperations:
         # TODO w/ paths and old subject metadata, push new subjects to Panoptes API
         for column_index, row_paths in row_paths_by_column.items():
             self._logger.info('Creating %d new row subjects for column index %d for subject %s',
-                              len(row_paths), column_index, source_subject_id)
+                              len(row_paths), column_index, source_subject.id)
             for row_path in row_paths:
                 new_subject = Subject()
                 new_subject.links.project = project
-                new_subject.metadata['source_document_subject_id'] = source_subject_id
+                copy_source_metadata_fields = ['book', 'page']
+                for copy_field in copy_source_metadata_fields:
+                    new_subject.metadata[copy_field] = source_subject.metadata[copy_field]
+                new_subject.metadata['source_document_subject_id'] = source_subject.id
                 new_subject.metadata['source_document_column_index'] = column_index
                 new_subject.add_location(row_path)
                 new_subject.save()
