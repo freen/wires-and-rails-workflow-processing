@@ -7,7 +7,7 @@ import re
 Model class for performing subject operations.
 """
 
-class SubjectModel(dict):
+class Subject(dict):
 	"""
 	Model class for performing subject operations.
 	"""
@@ -22,8 +22,16 @@ class SubjectModel(dict):
 		self._metadata = subject.metadata
 		self._hydrate_fields()
 
+	def _get_basename(self):
+		if 'filepath' in self._metadata:
+			return os.path.basename(self._metadata['filepath'])
+		elif 'Filename' in self._metadata:
+			return self._metadata['Filename']
+		raise RuntimeError('Cannot identify subject file basename')
+
 	def _hydrate_fields(self):
-		self['filename_no_ext'] = os.path.splitext(os.path.basename(self._metadata['filepath']))[0]
+		basename = self._get_basename()
+		self['filename_no_ext'] = os.path.splitext(basename)[0]
 		search = re.search(self.BOOK_AND_PAGE_PATTERN, self['filename_no_ext'])
 		self['book'] = search['book']
 		self['page'] = search['page']
