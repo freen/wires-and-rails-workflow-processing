@@ -19,6 +19,8 @@ i = 0
 skipped = []
 target_fields = ['book', 'page']
 for subject in subject_set.subjects:
+    i += 1
+    bar.update(i)
 
     # Skip already populated
     for field in target_fields:
@@ -36,8 +38,6 @@ for subject in subject_set.subjects:
                 subject.metadata['filepath'])
 
     subject.save()
-    i += 1
-    bar.update(i)
 
 print("INFO: Skipped %d subjects because one of target fields (%s) was already defined: %s"
     % len(skipped), ", ".join(target_fields), ", ".join(skipped))
