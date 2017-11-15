@@ -28,7 +28,6 @@ class SubjectHydrator:
     @classmethod
     def _hydrate_book_and_page(cls, row):
         subject = Subject.find(row['subject_id'])
-        # import pdb; pdb.set_trace()
         subject_model = SubjectModel(subject)
         subject.metadata['book'] = subject_model['book']
         subject.metadata['page'] = subject_model['page']
@@ -46,20 +45,26 @@ class SubjectHydrator:
         return True
 
     @classmethod
-    def _log_result(cls, skipped, filtered_subject_set_id):
-        print("INFO: Skipped %d subjects because one of target fields (%s) was already defined: %s"
-            % len(skipped), ", ".join(cls.BOOK_AND_PAGE_FIELDS), ", ".join(skipped))
+    def _log_result(cls, skipped, filtered_subject_set_id, no_filename_ids):
+        if len(skipped) > 0:
+            msg = "INFO: Skipped %d subjects because one of target fields" % len(skipped)
+            msg += " (%s) was already defined" % ", ".join(cls.BOOK_AND_PAGE_FIELDS)
+            print(msg)
         print("INFO: Filtered %d rows w/ wrong subject set id; no-op" % filtered_subject_set_id)
+        if len(no_filename_ids) > 0:
+            print("INFO: Failed to identify file basname for %d rows: %s" % len(no_filename_ids),
+                ", ".join(no_filename_ids))
 
     def run(self):
         filtered_subject_set_id = 0
         skipped = []
         rows_to_process = []
+        no_filename_ids = []
 
         for row in self._subject_set_csv:
             if self.PAGES_RAW_SUBJECT_SET_ID != int(row['subject_set_id']):
                 filtered_subject_set_id += 1
-                next
+                continue
             row['metadata'] = json.loads(row['metadata'])
             if not SubjectHydrator._row_missing_book_and_page(row):
                 skipped.append(row['subject_id'])
@@ -70,10 +75,13 @@ class SubjectHydrator:
         bar = progressbar.ProgressBar(max_value=len(rows_to_process))
         for row in rows_to_process:
             i += 1
-            SubjectHydrator._hydrate_book_and_page(row)
+            try:
+                SubjectHydrator._hydrate_book_and_page(row)
+            except ValueError:
+                no_filename_ids.append(row['subject_id'])
             bar.update(i)
 
-        SubjectHydrator._log_result(skipped, filtered_subject_set_id)
+        SubjectHydrator._log_result(skipped, filtered_subject_set_id, no_filename_ids)
 
 if __name__ == '__main__':
     if not os.path.isfile(CACHE_FILE_SUBJECT_SET_CSV):
