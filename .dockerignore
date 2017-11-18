@@ -1,3 +1,4 @@
+.env
 .git
 dump.rdb
 data/dump.rdb
