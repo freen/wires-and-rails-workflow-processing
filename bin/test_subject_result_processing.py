@@ -263,7 +263,7 @@ def run_subject_push_test():
     queue_ops.push_new_row_subjects(subject_id, row_paths_by_column)
 
 if __name__ == '__main__':
-    pass
+    # pass
     # run_segmentation_test()
-    # run_full_image_slicing_test()
+    run_full_image_slicing_test()
     # run_subject_push_test()
