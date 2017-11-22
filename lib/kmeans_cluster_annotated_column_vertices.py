@@ -9,6 +9,7 @@ from numpy import array, median, std
 from scipy.cluster.vq import kmeans, whiten
 
 from . import settings
+from .subject_set_csv import SubjectSetCSV
 
 class KmeansClusterAnnotatedColumnVertices:
     """
@@ -29,6 +30,9 @@ class KmeansClusterAnnotatedColumnVertices:
         # Populated by processAndCropCompletedSubjects()
         self._column_annotations_by_subject = {}
         self._vertex_centroids_by_subject = {}
+
+        subject_set_csv = SubjectSetCSV()
+        self._pages_raw_subject_ids = subject_set_csv.raw_pages_subject_ids()
 
     def calculate_vertex_centroids(self):
         """
@@ -82,8 +86,12 @@ class KmeansClusterAnnotatedColumnVertices:
 
         """
         self._logger.debug("Structuring classifications")
+        skipped_subject_ids = []
         for classification in self._classifications:
             for subject_id in classification.raw['links']['subjects']:
+                if subject_id not in self._pages_raw_subject_ids:
+                    skipped_subject_ids.append(subject_id)
+                    continue
                 for annotation in classification.raw['annotations']:
                     task_id = annotation['task']
                     if task_id not in self._annotations_by_task_and_subject:
@@ -91,6 +99,9 @@ class KmeansClusterAnnotatedColumnVertices:
                     if subject_id not in self._annotations_by_task_and_subject[task_id]:
                         self._annotations_by_task_and_subject[task_id][subject_id] = []
                     self._annotations_by_task_and_subject[task_id][subject_id].append(annotation)
+        unique_skipped_subject_ids = set(skipped_subject_ids)
+        self._logger.debug("Skipped classifications recorded for %d subject IDs outside " \
+            "pages_raw: %s", len(unique_skipped_subject_ids), ', '.join(unique_skipped_subject_ids))
 
     def _collect_column_set_annotations_by_subject(self):
         task_id = self._project_metadata['task_id']

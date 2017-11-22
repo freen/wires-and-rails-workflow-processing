@@ -12,7 +12,6 @@ import logging
 from lib import settings
 from lib.logger import setup_logger
 from lib.queue_operations import QueueOperations
-from lib.subject_set_csv import SubjectSetCSV
 from lib.kmeans_cluster_annotated_column_vertices import KmeansClusterAnnotatedColumnVertices
 
 from panoptes_client import Panoptes, Subject
@@ -28,10 +27,6 @@ def run(log_level):
                           log_level)
     logger.debug("Running Wires and Rails Workflow Processor")
     Panoptes.connect(username=settings.PANOPTES_USERNAME, password=settings.PANOPTES_PASSWORD)
-
-    subject_set_csv = SubjectSetCSV()
-    pages_raw_subject_ids = subject_set_csv.raw_pages_subject_ids()
-    import pdb; pdb.set_trace();
 
     clusterer = KmeansClusterAnnotatedColumnVertices({
         'project_id': settings.PROJECT_ID,
