@@ -6,11 +6,13 @@ Runner script. Define .env variables per .env.example and run e.g.
    python3 run.py
 """
 
+import csv
 import logging
 
 from lib import settings
 from lib.logger import setup_logger
 from lib.queue_operations import QueueOperations
+from lib.subject_set_csv import SubjectSetCSV
 from lib.kmeans_cluster_annotated_column_vertices import KmeansClusterAnnotatedColumnVertices
 
 from panoptes_client import Panoptes, Subject
@@ -27,10 +29,14 @@ def run(log_level):
     logger.debug("Running Wires and Rails Workflow Processor")
     Panoptes.connect(username=settings.PANOPTES_USERNAME, password=settings.PANOPTES_PASSWORD)
 
+    subject_set_csv = SubjectSetCSV()
+    pages_raw_subject_ids = subject_set_csv.raw_pages_subject_ids()
+    import pdb; pdb.set_trace();
+
     clusterer = KmeansClusterAnnotatedColumnVertices({
         'project_id': settings.PROJECT_ID,
         'workflow_id': settings.WORKFLOW_ID_DOCUMENT_VERTICES,
-        'subject_set_id': settings.SUBJECT_SET_ID_DOCUMENT_VERTICES,
+        'subject_set_id': settings.SUBJECT_SET_ID_PAGES_RAW,
         'task_id': settings.TASK_ID_DOCUMENT_VERTICES_WORKFLOW
     })
 

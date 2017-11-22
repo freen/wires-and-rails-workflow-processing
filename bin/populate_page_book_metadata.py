@@ -12,10 +12,9 @@ from panoptes_client import Panoptes, Subject
 
 from lib import settings
 from lib.models.subject import Subject as SubjectModel
+from lib.subject_set_csv import SubjectSetCSV
 
 Panoptes.connect(username=settings.PANOPTES_USERNAME, password=settings.PANOPTES_PASSWORD)
-
-CACHE_FILE_SUBJECT_SET_CSV = os.path.abspath('../etc/wires-and-rails-subjects.csv')
 
 class SubjectHydrator:
 
@@ -33,8 +32,8 @@ class SubjectHydrator:
         subject.metadata['page'] = subject_model['page']
         for field in cls.BOOK_AND_PAGE_FIELDS:
             if subject.metadata[field] is None:
-                print("WARN: None '%s' for subject %d and filepath %s" % field, subject.id,
-                    subject.metadata['filepath'])
+                raise ValueError("WARN: None '%s' for subject %d and filepath %s" % field,
+                    subject.id, subject.metadata['filepath'])
         subject.save()
 
     @classmethod
@@ -62,7 +61,7 @@ class SubjectHydrator:
         no_filename_ids = []
 
         for row in self._subject_set_csv:
-            if self.PAGES_RAW_SUBJECT_SET_ID != int(row['subject_set_id']):
+            if settings.SUBJECT_SET_ID_PAGES_RAW != int(row['subject_set_id']):
                 filtered_subject_set_id += 1
                 continue
             row['metadata'] = json.loads(row['metadata'])
@@ -84,11 +83,6 @@ class SubjectHydrator:
         SubjectHydrator._log_result(skipped, filtered_subject_set_id, no_filename_ids)
 
 if __name__ == '__main__':
-    if not os.path.isfile(CACHE_FILE_SUBJECT_SET_CSV):
-        raise RuntimeError("Subject set CSV absent: %s" % CACHE_FILE_SUBJECT_SET_CSV)
-
-    csv_file = open(CACHE_FILE_SUBJECT_SET_CSV, newline='')
-    csv_reader = csv.DictReader(csv_file)
-
-    subject_hydrater = SubjectHydrator(csv_reader)
+    subject_set_csv = SubjectSetCSV()
+    subject_hydrater = SubjectHydrator(subject_set_csv.csv_reader)
     subject_hydrater.run()
