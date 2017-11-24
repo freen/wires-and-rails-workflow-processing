@@ -33,5 +33,5 @@ class Subject(dict):
         basename = self._get_basename()
         self['filename_no_ext'] = os.path.splitext(basename)[0]
         search = re.search(self.BOOK_AND_PAGE_PATTERN, self['filename_no_ext'])
-        self['book'] = search['book']
-        self['page'] = search['page']
+        self['book'] = search.group('book')
+        self['page'] = search.group('page')
