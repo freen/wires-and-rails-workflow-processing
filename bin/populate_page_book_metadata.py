@@ -18,7 +18,6 @@ Panoptes.connect(username=settings.PANOPTES_USERNAME, password=settings.PANOPTES
 
 class SubjectHydrator:
 
-    PAGES_RAW_SUBJECT_SET_ID = 8339
     BOOK_AND_PAGE_FIELDS = ['book', 'page']
 
     def __init__(self, csv):
