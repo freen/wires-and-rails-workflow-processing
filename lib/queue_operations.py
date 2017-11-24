@@ -94,7 +94,6 @@ class QueueOperations:
                 new_subject = Subject()
                 new_subject.links.project = project
                 copy_source_metadata_fields = ['book', 'page']
-                import pdb; pdb.set_trace();
                 for copy_field in copy_source_metadata_fields:
                     new_subject.metadata[copy_field] = source_subject.metadata[copy_field]
                 new_subject.metadata['source_document_subject_id'] = source_subject.id

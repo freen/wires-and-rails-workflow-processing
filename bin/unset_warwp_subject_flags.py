@@ -13,7 +13,8 @@ from lib import settings
 
 Panoptes.connect(username=settings.PANOPTES_USERNAME, password=settings.PANOPTES_PASSWORD)
 
-SUBJECT_IDS = ['5823821', '5823822']
+# SUBJECT_IDS = ['5823821', '5823822']
+SUBJECT_IDS = ['14813279', '14813280', '14813281']
 
 for subject_id in SUBJECT_IDS:
     subject = Subject.find(subject_id)
