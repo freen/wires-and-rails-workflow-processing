@@ -14,5 +14,5 @@ class SubjectSetCSV:
 
     def raw_pages_subject_ids(self):
         ids = [row['subject_id'] for row in self.csv_reader \
-            if int(row['subject_set_id']) == settings.SUBJECT_SET_ID_PAGES_RAW]
+            if int(row['subject_set_id']) in settings.SUBJECT_SET_IDS_PAGES_RAW]
         return set(ids)

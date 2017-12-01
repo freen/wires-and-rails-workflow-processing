@@ -28,16 +28,26 @@ def run(log_level):
     logger.debug("Running Wires and Rails Workflow Processor")
     Panoptes.connect(username=settings.PANOPTES_USERNAME, password=settings.PANOPTES_PASSWORD)
 
-    clusterer = KmeansClusterAnnotatedColumnVertices({
-        'project_id': settings.PROJECT_ID,
-        'workflow_id': settings.WORKFLOW_ID_DOCUMENT_VERTICES,
-        'subject_set_id': settings.SUBJECT_SET_ID_PAGES_RAW,
-        'task_id': settings.TASK_ID_DOCUMENT_VERTICES_WORKFLOW
-    })
+    retired_subject_ids = []
+    vertex_centroids_by_subject = {}
 
-    # Calculate vertex centroids
-    vertex_centroids_by_subject = clusterer.calculate_vertex_centroids()
-    retired_subject_ids = clusterer.retired_subject_ids()
+    for subject_set_id, metadata in settings.COLUMNS_WORKFLOW_METADATA.items():
+
+        logger.debug("Loading vertices / subject retirement info for %(debug_name)s subject set " \
+            "(subject set id: %(subject_set_id)d; workflow id: %(workflow_id)d; task id: " \
+            " %(task_id)d", metadata)
+
+        clusterer = KmeansClusterAnnotatedColumnVertices({
+            'project_id': settings.PROJECT_ID,
+            'workflow_id': metadata['workflow_id'],
+            'subject_set_id': subject_set_id,
+            'task_id': metadata['task_id']
+        })
+
+        # Calculate vertex centroids
+        vertex_centroids_by_subject = {**vertex_centroids_by_subject,
+            **clusterer.calculate_vertex_centroids()}
+        retired_subject_ids += clusterer.retired_subject_ids()
 
     logger.debug('Retrieved the following subject centroids for image segmentation: %s',
                  str(vertex_centroids_by_subject))
