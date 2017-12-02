@@ -45,8 +45,7 @@ def run(log_level):
         })
 
         # Calculate vertex centroids
-        vertex_centroids_by_subject = {**vertex_centroids_by_subject,
-            **clusterer.calculate_vertex_centroids()}
+        vertex_centroids_by_subject.update(clusterer.calculate_vertex_centroids())
         retired_subject_ids += clusterer.retired_subject_ids()
 
     logger.debug('Retrieved the following subject centroids for image segmentation: %s',

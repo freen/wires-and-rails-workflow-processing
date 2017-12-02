@@ -28,7 +28,7 @@ WORKFLOW_ID_RAILROAD_MARK_IMAGE_TYPE = 3548 # "Railroads_Mark_Image_Type"
 WORKFLOW_ID_TELEGRAPH_MARK_IMAGE_TYPE = 4413 # "Telegraph_Mark_Image_Type"
 
 TASK_ID_RAILROAD_COLUMN_SEPARATORS = 'T1' # (Column demarcation task.)
-TASK_ID_TELEGRAPH_COLUMN_SEPARATORS = '?????????' # (Column demarcation task.)
+TASK_ID_TELEGRAPH_COLUMN_SEPARATORS = 'T3' # (Column demarcation task.)
 
 COLUMNS_WORKFLOW_METADATA = {
     SUBJECT_SET_ID_PAGES_RAW_RAILROAD: {
