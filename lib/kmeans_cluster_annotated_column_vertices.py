@@ -105,6 +105,8 @@ class KmeansClusterAnnotatedColumnVertices:
 
     def _collect_column_set_annotations_by_subject(self):
         task_id = self._project_metadata['task_id']
+        if not task_id in self._annotations_by_task_and_subject:
+            return
         column_annotations = self._annotations_by_task_and_subject[task_id]
         for subject_id, annotations in column_annotations.items():
             if not subject_id in self._column_annotations_by_subject:

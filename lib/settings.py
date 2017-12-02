@@ -34,13 +34,13 @@ COLUMNS_WORKFLOW_METADATA = {
     SUBJECT_SET_ID_PAGES_RAW_RAILROAD: {
         'debug_name': 'Railroad Pages',
         'workflow_id': WORKFLOW_ID_RAILROAD_MARK_IMAGE_TYPE,
-        'tasK_id': TASK_ID_RAILROAD_COLUMN_SEPARATORS,
+        'task_id': TASK_ID_RAILROAD_COLUMN_SEPARATORS,
         'subject_set_id': SUBJECT_SET_ID_PAGES_RAW_RAILROAD
     },
     SUBJECT_SET_ID_PAGES_RAW_TELEGRAPH: {
         'debug_name': 'Telegraph Pages',
         'workflow_id': WORKFLOW_ID_TELEGRAPH_MARK_IMAGE_TYPE,
-        'tasK_id': TASK_ID_TELEGRAPH_COLUMN_SEPARATORS,
+        'task_id': TASK_ID_TELEGRAPH_COLUMN_SEPARATORS,
         'subject_set_id': SUBJECT_SET_ID_PAGES_RAW_TELEGRAPH
     },
 }

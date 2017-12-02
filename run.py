@@ -35,7 +35,7 @@ def run(log_level):
 
         logger.debug("Loading vertices / subject retirement info for %(debug_name)s subject set " \
             "(subject set id: %(subject_set_id)d; workflow id: %(workflow_id)d; task id: " \
-            " %(task_id)d", metadata)
+            " %(task_id)s", metadata)
 
         clusterer = KmeansClusterAnnotatedColumnVertices({
             'project_id': settings.PROJECT_ID,
