@@ -51,7 +51,8 @@ def run(log_level):
     logger.debug('Retrieved the following subject centroids for image segmentation: %s',
                  str(vertex_centroids_by_subject))
 
-    logger.debug('Enqueuing the following retired subjects: %s', str(retired_subject_ids))
+    logger.debug('For the following retired subject IDs: %s',
+                 str(retired_subject_ids))
 
     queue = Queue(connection=Redis(host=settings.REDIS_HOST))
 
@@ -61,6 +62,7 @@ def run(log_level):
            subject.metadata[settings.METADATA_KEY_ALREADY_PROCESSED]:
             logger.debug('Skipping subject id %s; already processed.', subject_id)
             continue
+        logger.debug('Enqueuing subjects id: %s', subject_id)
         queue.enqueue(QueueOperations.queue_new_subject_creation, subject_id,
                       vertex_centroids_by_subject[subject_id], timeout=2*60*60)
         QueueOperations.flag_subject_as_queued(subject)
