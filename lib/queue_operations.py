@@ -107,7 +107,7 @@ class QueueOperations:
 
     def perform_column_segmentation(self, subject_id, image_path, vertex_centroids):
         """Given each subject_id's image paths and centroids, chop the images into columns"""
-        self._logger.debug('Called with the following vertext centroids: %s', str(vertex_centroids))
+        self._logger.debug('Called with the following vertex centroids: %s', str(vertex_centroids))
         split_images = []
         self._logger.info('Loading subject id %s image file %s', subject_id, image_path)
         offset, column_int = 0, 0

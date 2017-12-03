@@ -1,5 +1,16 @@
 version: "3"
 services:
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data:/data
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - webnet
   cron-and-queue:
     image: freen/wires-and-rails-workflow-processing:latest
     volumes:
@@ -17,16 +28,5 @@ services:
     ports:
       - "9181:9181" # rq-dashboard
     env_file: .env
-  redis:
-    image: redis:latest
-    ports:
-      - "6379:6379"
-    volumes:
-      - ./data:/data
-    deploy:
-      placement:
-        constraints: [node.role == manager]
-    networks:
-      - webnet
 networks:
   webnet:

@@ -12,7 +12,7 @@ class Subject(dict):
     Model class for performing subject operations.
     """
 
-    BOOK_AND_PAGE_PATTERN = r'^(?P<book>[\d\-]+)\s.+\s(?P<page>\d+)$'
+    BOOK_AND_PAGE_PATTERN = r'^(?P<book>[\d\-]+)\s.+\s(?P<page>\d+)(\.bin)?$'
 
     def __init__(self, subject):
         self._set_subject(subject)

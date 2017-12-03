@@ -60,7 +60,7 @@ class SubjectHydrator:
         no_filename_ids = []
 
         for row in self._subject_set_csv:
-            if settings.SUBJECT_SET_ID_PAGES_RAW != int(row['subject_set_id']):
+            if int(row['subject_set_id']) not in settings.SUBJECT_SET_IDS_PAGES_RAW:
                 filtered_subject_set_id += 1
                 continue
             row['metadata'] = json.loads(row['metadata'])
