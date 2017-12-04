@@ -27,13 +27,14 @@ class SubjectSegmentationStatistics:
             row['metadata'] = json.loads(row['metadata'])
             self._process_row(row)
 
-        tabular = [['Subject Set ID', 'Subject ID', 'Column Index', 'Quantity']]
+        tabular = []
         for subject_set_id, subjects in self._stats.items():
             for subject_id, columns in subjects.items():
                 for column_index, quantity in columns.items():
                     tabular.append([subject_set_id, subject_id, column_index, quantity])
 
-        print(tabulate(tabular))
+        table_headers = ['Subject Set ID', 'Subject ID', 'Column Index', 'Quantity']
+        print(tabulate(tabular, headers=table_headers))
 
     def _process_row(self, row):
         if not 'source_document_subject_id' in row['metadata']:
