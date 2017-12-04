@@ -1,2 +1,3 @@
 pylint
 progressbar2
+tabulate
