@@ -27,26 +27,34 @@ class SubjectSegmentationStatistics:
             row['metadata'] = json.loads(row['metadata'])
             self._process_row(row)
 
-        tabular = [['Subject ID', 'Column Index', 'Quantity']]
-        for subject_id, columns in self._stats.items():
-            for column_index, quantity in columns.items():
-                tabular.append([subject_id, column_index, quantity])
+        tabular = [['Subject Set ID', 'Subject ID', 'Column Index', 'Quantity']]
+        for subject_set_id, subjects in self._stats.items():
+            for subject_id, columns in subjects.items():
+                for column_index, quantity in columns.items():
+                    tabular.append([subject_set_id, subject_id, column_index, quantity])
 
         print(tabulate(tabular))
 
     def _process_row(self, row):
         if not 'source_document_subject_id' in row['metadata']:
             return
+
         parent_subject_id = row['metadata']['source_document_subject_id']
 
         if not 'source_document_column_index' in row['metadata']:
             return
+
         column_index = row['metadata']['source_document_column_index']
 
-        if not column_index in self._stats[parent_subject_id]:
-            self._stats[parent_subject_id][column_index] = 0
+        subject_set_id = row['subject_set_id']
 
-        self._stats[parent_subject_id][column_index] += 1
+        if not subject_set_id in self._stats:
+            self._stats[subject_set_id] = defaultdict(dict)
+
+        if not column_index in self._stats[subject_set_id][parent_subject_id]:
+            self._stats[subject_set_id][parent_subject_id][column_index] = 0
+
+        self._stats[subject_set_id][parent_subject_id][column_index] += 1
 
 
 if __name__ == '__main__':
