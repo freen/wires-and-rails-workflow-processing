@@ -27,7 +27,7 @@ class SubjectSegmentationStatistics:
             row['metadata'] = json.loads(row['metadata'])
             self._process_row(row)
 
-        tabular = []
+        tabular = [['Subject ID', 'Column Index', 'Quantity']]
         for subject_id, columns in self._stats.items():
             for column_index, quantity in columns.items():
                 tabular.append([subject_id, column_index, quantity])
