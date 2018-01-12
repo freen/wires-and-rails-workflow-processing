@@ -3,6 +3,7 @@ import os.path
 
 from lib import settings
 
+# TODO singleton
 class SubjectSetCSV:
 
     def __init__(self):
@@ -12,7 +13,29 @@ class SubjectSetCSV:
         csv_file = open(csv_filepath, newline='')
         self.csv_reader = csv.DictReader(csv_file)
 
+        self._raw_pages_subject_ids = None
+        self._subject_ids_by_subject_set_id = None
+
     def raw_pages_subject_ids(self):
-        ids = [row['subject_id'] for row in self.csv_reader \
-            if int(row['subject_set_id']) in settings.SUBJECT_SET_IDS_PAGES_RAW]
-        return set(ids)
+        if self._raw_pages_subject_ids is None:
+            ids = [row['subject_id'] for row in self.csv_reader \
+                if int(row['subject_set_id']) in settings.SUBJECT_SET_IDS_PAGES_RAW]
+            self._raw_pages_subject_ids = set(ids)
+        return self._raw_pages_subject_ids
+
+    # WARN not useful for subjects which are in more than one subject set (unlike raw pages)
+    def get_subject_set_id(self, subject_id):
+        for subject_set_id, subject_ids in self.subject_ids_by_subject_set_id().items():
+            if int(subject_id) in subject_ids:
+                return subject_set_id
+        return False
+
+    def subject_ids_by_subject_set_id(self):
+        if self._subject_ids_by_subject_set_id is None:
+            self._subject_ids_by_subject_set_id = {}
+            for row in self.csv_reader:
+                set_id = int(row['subject_set_id'])
+                if not set_id in self._subject_ids_by_subject_set_id:
+                    self._subject_ids_by_subject_set_id[set_id] = set()
+                self._subject_ids_by_subject_set_id[set_id].add(int(row['subject_id']))
+        return self._subject_ids_by_subject_set_id

@@ -11,6 +11,7 @@ from panoptes_client import Project, Subject, SubjectSet
 from . import settings
 from .logger import setup_logger
 from .ocropy import Ocropy
+from .subject_set_csv import SubjectSetCSV
 
 class QueueOperations:
     """
@@ -81,9 +82,25 @@ class QueueOperations:
         """
         project = Project.find(settings.PROJECT_ID)
         # subject = Subject.find(source_subject.id)
-        subject_set_unclassified_rows = SubjectSet.find(
-            settings.SUBJECT_SET_ID_PAGES_ROWS_UNCLASSIFIED
-        )
+
+        subject_set_csv = SubjectSetCSV()
+        subject_set_id = subject_set_csv.get_subject_set_id(source_subject.id)
+
+        self._logger.info('Identified parent subject set of subject id %s as %s', source_subject.id,
+            subject_set_id)
+
+        if subject_set_id == settings.SUBJECT_SET_ID_PAGES_RAW_RAILROAD:
+            target_subject_set_id = settings.SUBJECT_SET_ID_PAGES_ROWS_UNCLASSIFIED_RAILROAD
+            log_set_name = 'Railroad'
+        elif subject_set_id == settings.SUBJECT_SET_ID_PAGES_RAW_TELEGRAPH:
+            target_subject_set_id = settings.SUBJECT_SET_ID_PAGES_ROWS_UNCLASSIFIED_TELEGRAPH
+            log_set_name = 'Telegraph'
+        else:
+            raise RuntimeError('Invalid source subject set ID, no target: %s' % source_subject.id)
+
+        self._logger.info('Identified source subject as %s subject.', log_set_name)
+
+        subject_set_unclassified_rows = SubjectSet.find(target_subject_set_id)
 
         new_row_subjects = []
 

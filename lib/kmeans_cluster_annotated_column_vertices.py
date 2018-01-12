@@ -47,7 +47,7 @@ class KmeansClusterAnnotatedColumnVertices:
     def retired_subject_ids(self):
         """
         Derive this value (not available in the API) by comparing classification counts to the
-        configured subject retirement classification count. Must call
+        configured subject retirement classification count.
         """
         self._hydrate()
         retirement_classification_count = self._workflow.retirement['options']['count']
