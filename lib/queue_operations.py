@@ -87,7 +87,7 @@ class QueueOperations:
         subject_set_id = subject_set_csv.get_subject_set_id(source_subject.id)
 
         self._logger.info('Identified parent subject set of subject id %s as %s', source_subject.id,
-            subject_set_id)
+                          subject_set_id)
 
         if subject_set_id == settings.SUBJECT_SET_ID_PAGES_RAW_RAILROAD:
             target_subject_set_id = settings.SUBJECT_SET_ID_PAGES_ROWS_UNCLASSIFIED_RAILROAD

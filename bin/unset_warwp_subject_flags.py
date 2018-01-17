@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 """
-Run for quick access to debug / run tests on the Panoptes API.
+Un-flag arbitrary subjects as not processed, useful for debugging workflow processing.
 """
 
 import sys
