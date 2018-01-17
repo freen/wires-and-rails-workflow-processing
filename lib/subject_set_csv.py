@@ -4,6 +4,8 @@ to answer as many questions as possible, namely where the stable "pages_raw" sub
 concerned. This CSV is exported from the project backend [1] and must be located in the
 application's docker container at the path: settings.CACHE_FILE_SUBJECT_SET_CSV_FILEPATH
 
+For more info, see discussion here: https://github.com/zooniverse/panoptes-python-client/issues/124
+
 [1] https://www.zooniverse.org/lab/3370/data-exports
 """
 

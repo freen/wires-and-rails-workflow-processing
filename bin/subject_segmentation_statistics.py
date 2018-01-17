@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 
+"""
+Visibility into what the Telegraph / Railroad "row" subject sets contain is a challenge, since any
+given page produces hundreds of segmented child subjects. Particularly for debugging or
+investigation it is important to be able to see how many columns a subject produced, and how many
+rows each column produced, and in which subject set those results currently stand. This tool tries
+to add that visibility.
+"""
+
 import sys
 sys.path.insert(0, "..")
 
@@ -16,6 +24,12 @@ from lib.subject_set_csv import SubjectSetCSV
 Panoptes.connect(username=settings.PANOPTES_USERNAME, password=settings.PANOPTES_PASSWORD)
 
 class SubjectSegmentationStatistics:
+    """
+    Tell the user the breakdown of a raw subject's columns and rows, their quantities and their
+    subject sets.
+
+    TODO Might make sense to limit this report to subject sets, e.g. pages_rows_unclassified
+    """
 
     def __init__(self, csv):
         self._subject_set_csv = csv
@@ -23,6 +37,9 @@ class SubjectSegmentationStatistics:
 
 
     def run(self):
+        """
+        Collect and display tabulated subject column / row / set information.
+        """
         for row in self._subject_set_csv:
             row['metadata'] = json.loads(row['metadata'])
             self._process_row(row)
@@ -57,8 +74,6 @@ class SubjectSegmentationStatistics:
 
         self._stats[subject_set_id][parent_subject_id][column_index] += 1
 
-
 if __name__ == '__main__':
-    subject_set_csv = SubjectSetCSV()
-    subject_segmentation_statistics = SubjectSegmentationStatistics(subject_set_csv.csv_reader)
-    subject_segmentation_statistics.run()
+    CSV = SubjectSetCSV()
+    SubjectSegmentationStatistics(CSV.csv_reader).run()
