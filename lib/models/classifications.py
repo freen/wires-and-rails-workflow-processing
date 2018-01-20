@@ -2,9 +2,7 @@
 Answers questions about a set of classifications.
 """
 
-import logging
-from panoptes_client import Workflow, Classification
-from lib import settings
+from collections import defaultdict
 
 class Classifications:
 
@@ -18,7 +16,7 @@ class Classifications:
         """
         Result: self._annotations[task_id][subject_id] = annotation
         """
-        annotations = {}
+        annotations = defaultdict(dict)
         skipped_subject_ids = []
         for classification in classifications:
             for subject_id in classification.raw['links']['subjects']:
@@ -37,8 +35,6 @@ class Classifications:
     def _add_annotations(self, annotations, classification, subject_id):
         for annotation in classification.raw['annotations']:
             task_id = annotation['task']
-            if task_id not in annotations:
-                annotations[task_id] = {}
             if subject_id not in annotations[task_id]:
                 annotations[task_id][subject_id] = []
             annotations[task_id][subject_id].append(annotation)
