@@ -7,3 +7,11 @@ if [[ "$RC" != "0" ]]; then
   echo "(pylint failed. [code $RC])"
   exit $RC
 fi
+
+python3 -m pytest
+RC=$?
+
+if [[ "$RC" != "0" ]]; then
+  echo "(pytest failed. [code $RC])"
+  exit $RC
+fi

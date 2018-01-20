@@ -21,8 +21,6 @@ from tabulate import tabulate
 from lib import settings
 from lib.subject_set_csv import SubjectSetCSV
 
-Panoptes.connect(username=settings.PANOPTES_USERNAME, password=settings.PANOPTES_PASSWORD)
-
 class SubjectSegmentationStatistics:
     """
     Tell the user the breakdown of a raw subject's columns and rows, their quantities and their

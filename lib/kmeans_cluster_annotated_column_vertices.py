@@ -22,7 +22,7 @@ class KmeansClusterAnnotatedColumnVertices:
         self._logger = logging.getLogger(settings.APP_NAME)
         self._hydrated = False
 
-        # Populated by _load_data()
+        # Populated by _load_classification_data()
         self._annotations_by_task_and_subject = {}
         self._classifications = []
         self._workflow = None

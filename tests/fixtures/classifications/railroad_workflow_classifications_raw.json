@@ -1,0 +1,2350 @@
+[
+  {
+    "id": "67244213",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 1652.7977294921875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-08-17T08:20:57.902Z",
+    "updated_at": "2017-08-17T08:20:57.936Z",
+    "metadata": {
+      "session": "e39bac45f8e2b28f7c862e91242eb12aba939302026aaafae73daa387e4b536c",
+      "viewport": {
+        "width": 1439,
+        "height": 755
+      },
+      "started_at": "2017-08-17T08:20:08.157Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-08-17T08:20:57.617Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 467,
+          "clientHeight": 679,
+          "naturalWidth": 3337,
+          "naturalHeight": 4860
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/67244213",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "5823821"
+      ]
+    }
+  },
+  {
+    "id": "67244293",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 590.6611938476562,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1116.3013916015625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1641.0196533203125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2707.403564453125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2173.5458984375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-08-17T08:22:07.273Z",
+    "updated_at": "2017-08-17T08:22:07.365Z",
+    "metadata": {
+      "session": "e39bac45f8e2b28f7c862e91242eb12aba939302026aaafae73daa387e4b536c",
+      "viewport": {
+        "width": 1439,
+        "height": 755
+      },
+      "started_at": "2017-08-17T08:21:00.109Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-08-17T08:22:06.979Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 448,
+          "clientHeight": 679,
+          "naturalWidth": 3233,
+          "naturalHeight": 4902
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/67244293",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "5823822"
+      ]
+    }
+  },
+  {
+    "id": "67244320",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 590.6611938476562,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1124.5189208984375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1643.9481201171875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2177.805908203125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2697.235107421875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-08-17T08:22:29.454Z",
+    "updated_at": "2017-08-17T08:22:29.509Z",
+    "metadata": {
+      "session": "e39bac45f8e2b28f7c862e91242eb12aba939302026aaafae73daa387e4b536c",
+      "viewport": {
+        "width": 1439,
+        "height": 755
+      },
+      "started_at": "2017-08-17T08:22:08.801Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-08-17T08:22:29.167Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        null
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/67244320",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "5823822"
+      ]
+    }
+  },
+  {
+    "id": "67245177",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 1651.8260498046875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-08-17T08:39:47.111Z",
+    "updated_at": "2017-08-17T08:39:47.142Z",
+    "metadata": {
+      "session": "cfedffcaefc089a885acd147685494201a989da7aa2b31a24a8fa97d62df9995",
+      "viewport": {
+        "width": 1439,
+        "height": 711
+      },
+      "started_at": "2017-08-17T08:39:37.498Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-08-17T08:39:46.829Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 439,
+          "clientHeight": 640,
+          "naturalWidth": 3337,
+          "naturalHeight": 4860
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/67245177",
+    "links": {
+      "project": "3370",
+      "user": "1676604",
+      "workflow": "3548",
+      "subjects": [
+        "5823821"
+      ]
+    }
+  },
+  {
+    "id": "67245200",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 1742.9688720703125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-08-17T08:40:06.432Z",
+    "updated_at": "2017-08-17T08:40:06.488Z",
+    "metadata": {
+      "session": "cfedffcaefc089a885acd147685494201a989da7aa2b31a24a8fa97d62df9995",
+      "viewport": {
+        "width": 1439,
+        "height": 711
+      },
+      "started_at": "2017-08-17T08:39:59.860Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-08-17T08:40:06.140Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 439,
+          "clientHeight": 640,
+          "naturalWidth": 3337,
+          "naturalHeight": 4860
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/67245200",
+    "links": {
+      "project": "3370",
+      "user": "1676604",
+      "workflow": "3548",
+      "subjects": [
+        "5823821"
+      ]
+    }
+  },
+  {
+    "id": "67245090",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2702.847412109375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-08-17T08:38:31.902Z",
+    "updated_at": "2017-08-17T08:38:31.947Z",
+    "metadata": {
+      "session": "cfedffcaefc089a885acd147685494201a989da7aa2b31a24a8fa97d62df9995",
+      "viewport": {
+        "width": 1439,
+        "height": 711
+      },
+      "started_at": "2017-08-17T08:38:21.977Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-08-17T08:38:31.619Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 422,
+          "clientHeight": 640,
+          "naturalWidth": 3233,
+          "naturalHeight": 4902
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/67245090",
+    "links": {
+      "project": "3370",
+      "user": "1676604",
+      "workflow": "3548",
+      "subjects": [
+        "5823822"
+      ]
+    }
+  },
+  {
+    "id": "67245165",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2695.1865234375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2166.58642578125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1630.325439453125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1101.725341796875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 573.125244140625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-08-17T08:39:36.556Z",
+    "updated_at": "2017-08-17T08:39:36.613Z",
+    "metadata": {
+      "session": "cfedffcaefc089a885acd147685494201a989da7aa2b31a24a8fa97d62df9995",
+      "viewport": {
+        "width": 1439,
+        "height": 711
+      },
+      "started_at": "2017-08-17T08:39:16.075Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-08-17T08:39:36.244Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 422,
+          "clientHeight": 640,
+          "naturalWidth": 3233,
+          "naturalHeight": 4902
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/67245165",
+    "links": {
+      "project": "3370",
+      "user": "1676604",
+      "workflow": "3548",
+      "subjects": [
+        "5823822"
+      ]
+    }
+  },
+  {
+    "id": "67245205",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 534.8208618164062,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2725.830078125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2166.58642578125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1109.38623046875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1630.325439453125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-08-17T08:40:17.790Z",
+    "updated_at": "2017-08-17T08:40:17.835Z",
+    "metadata": {
+      "session": "cfedffcaefc089a885acd147685494201a989da7aa2b31a24a8fa97d62df9995",
+      "viewport": {
+        "width": 1439,
+        "height": 711
+      },
+      "started_at": "2017-08-17T08:40:06.854Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-08-17T08:40:17.498Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 422,
+          "clientHeight": 640,
+          "naturalWidth": 3233,
+          "naturalHeight": 4902
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/67245205",
+    "links": {
+      "project": "3370",
+      "user": "1676604",
+      "workflow": "3548",
+      "subjects": [
+        "5823822"
+      ]
+    }
+  },
+  {
+    "id": "67245079",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 1636.6356201171875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-08-17T08:38:19.523Z",
+    "updated_at": "2017-08-17T08:38:19.616Z",
+    "metadata": {
+      "session": "cfedffcaefc089a885acd147685494201a989da7aa2b31a24a8fa97d62df9995",
+      "viewport": {
+        "width": 1439,
+        "height": 711
+      },
+      "started_at": "2017-08-17T08:37:52.250Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-08-17T08:38:19.210Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 439,
+          "clientHeight": 640,
+          "naturalWidth": 3337,
+          "naturalHeight": 4860
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/67245079",
+    "links": {
+      "project": "3370",
+      "user": "1676604",
+      "workflow": "3548",
+      "subjects": [
+        "5823821"
+      ]
+    }
+  },
+  {
+    "id": "67245192",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2702.847412109375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2158.925537109375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1645.647216796875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1170.6732177734375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 596.1078491210938,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-08-17T08:39:58.620Z",
+    "updated_at": "2017-08-17T08:39:58.704Z",
+    "metadata": {
+      "session": "cfedffcaefc089a885acd147685494201a989da7aa2b31a24a8fa97d62df9995",
+      "viewport": {
+        "width": 1439,
+        "height": 711
+      },
+      "started_at": "2017-08-17T08:39:47.899Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-08-17T08:39:58.331Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 422,
+          "clientHeight": 640,
+          "naturalWidth": 3233,
+          "naturalHeight": 4902
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/67245192",
+    "links": {
+      "project": "3370",
+      "user": "1676604",
+      "workflow": "3548",
+      "subjects": [
+        "5823822"
+      ]
+    }
+  },
+  {
+    "id": "67245144",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 1659.4212646484375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-08-17T08:39:15.657Z",
+    "updated_at": "2017-08-17T08:39:15.736Z",
+    "metadata": {
+      "session": "cfedffcaefc089a885acd147685494201a989da7aa2b31a24a8fa97d62df9995",
+      "viewport": {
+        "width": 1439,
+        "height": 711
+      },
+      "started_at": "2017-08-17T08:38:59.525Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-08-17T08:39:15.368Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 439,
+          "clientHeight": 640,
+          "naturalWidth": 3337,
+          "naturalHeight": 4860
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/67245144",
+    "links": {
+      "project": "3370",
+      "user": "1676604",
+      "workflow": "3548",
+      "subjects": [
+        "5823821"
+      ]
+    }
+  },
+  {
+    "id": "60460487",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 1634.807861328125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1107.5955810546875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 592.7882690429688,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2174.42529296875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2707.84033203125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-06-19T17:58:10.734Z",
+    "updated_at": "2017-06-19T17:58:10.858Z",
+    "metadata": {
+      "session": "180fd5d190ae6f6d4b38757ee33769cedaa3e692bb545ef106c3cc1b5f36c132",
+      "viewport": {
+        "width": 1686,
+        "height": 878
+      },
+      "started_at": "2017-06-19T17:57:21.377Z",
+      "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.104 Safari/537.36",
+      "utc_offset": "18000",
+      "finished_at": "2017-06-19T17:58:10.614Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 521,
+          "clientHeight": 790,
+          "naturalWidth": 3233,
+          "naturalHeight": 4902
+        }
+      ],
+      "workflow_version": "19.15"
+    },
+    "href": "/classifications/60460487",
+    "links": {
+      "project": "3370",
+      "user": "1532117",
+      "workflow": "3548",
+      "subjects": [
+        "5823822"
+      ]
+    }
+  },
+  {
+    "id": "70629847",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 1634.9161376953125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-09-15T12:49:14.407Z",
+    "updated_at": "2017-09-15T12:49:14.488Z",
+    "metadata": {
+      "session": "65ddd612a28625c8d94979bc8a82874c6d0884de88cec91d6552f36621d07075",
+      "viewport": {
+        "width": 1440,
+        "height": 755
+      },
+      "started_at": "2017-09-15T12:49:05.304Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-09-15T12:49:13.999Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 467,
+          "clientHeight": 679,
+          "naturalWidth": 3337,
+          "naturalHeight": 4860
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/70629847",
+    "links": {
+      "project": "3370",
+      "user": "1676604",
+      "workflow": "3548",
+      "subjects": [
+        "5823821"
+      ]
+    }
+  },
+  {
+    "id": "70629837",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2159.770263671875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1625.912353515625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1099.2689208984375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 565.4111938476562,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2708.056396484375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-09-15T12:49:04.262Z",
+    "updated_at": "2017-09-15T12:49:04.329Z",
+    "metadata": {
+      "session": "65ddd612a28625c8d94979bc8a82874c6d0884de88cec91d6552f36621d07075",
+      "viewport": {
+        "width": 1440,
+        "height": 755
+      },
+      "started_at": "2017-09-15T12:48:48.997Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-09-15T12:49:03.838Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 448,
+          "clientHeight": 679,
+          "naturalWidth": 3233,
+          "naturalHeight": 4902
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/70629837",
+    "links": {
+      "project": "3370",
+      "user": "1676604",
+      "workflow": "3548",
+      "subjects": [
+        "5823822"
+      ]
+    }
+  },
+  {
+    "id": "70629860",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2686.41357421875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2174.19873046875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1654.76953125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1084.84033203125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 587.0540771484375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-09-15T12:49:27.733Z",
+    "updated_at": "2017-09-15T12:49:27.782Z",
+    "metadata": {
+      "session": "65ddd612a28625c8d94979bc8a82874c6d0884de88cec91d6552f36621d07075",
+      "viewport": {
+        "width": 1440,
+        "height": 755
+      },
+      "started_at": "2017-09-15T12:49:14.915Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-09-15T12:49:27.276Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 448,
+          "clientHeight": 679,
+          "naturalWidth": 3233,
+          "naturalHeight": 4902
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/70629860",
+    "links": {
+      "project": "3370",
+      "user": "1676604",
+      "workflow": "3548",
+      "subjects": [
+        "5823822"
+      ]
+    }
+  },
+  {
+    "id": "70836337",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 779.2958374023438,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1403.3057861328125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2045.4029541015625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2687.5,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 3338.640869140625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-09-17T09:50:31.838Z",
+    "updated_at": "2017-09-17T09:50:31.884Z",
+    "metadata": {
+      "session": "fc05c099f23210489952f7b1aae32a65ef9ea2ad3135f0b6b3ecad9da51f1cc1",
+      "viewport": {
+        "width": 1438,
+        "height": 755
+      },
+      "started_at": "2017-09-17T09:49:59.963Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-09-17T09:50:31.330Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 442,
+          "clientHeight": 679,
+          "naturalWidth": 3995,
+          "naturalHeight": 6145
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/70836337",
+    "links": {
+      "project": "3370",
+      "user": "1676604",
+      "workflow": "3548",
+      "subjects": [
+        "12993513"
+      ]
+    }
+  },
+  {
+    "id": "70836325",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 609.5582885742188,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1232.8614501953125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1873.722412109375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2523.3623046875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 3173.002197265625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-09-17T09:49:59.069Z",
+    "updated_at": "2017-09-17T09:49:59.118Z",
+    "metadata": {
+      "session": "fc05c099f23210489952f7b1aae32a65ef9ea2ad3135f0b6b3ecad9da51f1cc1",
+      "viewport": {
+        "width": 1438,
+        "height": 755
+      },
+      "started_at": "2017-09-17T09:49:13.452Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-09-17T09:49:58.726Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 440,
+          "clientHeight": 679,
+          "naturalWidth": 3865,
+          "naturalHeight": 5965
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/70836325",
+    "links": {
+      "project": "3370",
+      "user": "1676604",
+      "workflow": "3548",
+      "subjects": [
+        "12992851"
+      ]
+    }
+  },
+  {
+    "id": "70836576",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 1972.449462890625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-09-17T09:54:35.949Z",
+    "updated_at": "2017-09-17T09:54:35.987Z",
+    "metadata": {
+      "session": "71547ccb5c40af4210b99c73d8252153d66071c7917b663efa2ebaf7407e291b",
+      "viewport": {
+        "width": 1438,
+        "height": 755
+      },
+      "started_at": "2017-09-17T09:54:19.573Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-09-17T09:54:35.606Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 467,
+          "clientHeight": 679,
+          "naturalWidth": 3991,
+          "naturalHeight": 5811
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/70836576",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "12992773"
+      ]
+    }
+  },
+  {
+    "id": "70836420",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 772.7642211914062,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1416.5936279296875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2051.48095703125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2686.3681640625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 3330.197509765625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-09-17T09:51:58.564Z",
+    "updated_at": "2017-09-17T09:51:58.599Z",
+    "metadata": {
+      "session": "fc05c099f23210489952f7b1aae32a65ef9ea2ad3135f0b6b3ecad9da51f1cc1",
+      "viewport": {
+        "width": 1438,
+        "height": 755
+      },
+      "started_at": "2017-09-17T09:50:33.132Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-09-17T09:51:58.225Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 452,
+          "clientHeight": 679,
+          "naturalWidth": 4044,
+          "naturalHeight": 6076
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/70836420",
+    "links": {
+      "project": "3370",
+      "user": "1676604",
+      "workflow": "3548",
+      "subjects": [
+        "12993899"
+      ]
+    }
+  },
+  {
+    "id": "70836563",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 716.516845703125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1348.9345703125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1998.44482421875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2639.40869140625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 3280.372802734375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-09-17T09:54:18.539Z",
+    "updated_at": "2017-09-17T09:54:18.619Z",
+    "metadata": {
+      "session": "71547ccb5c40af4210b99c73d8252153d66071c7917b663efa2ebaf7407e291b",
+      "viewport": {
+        "width": 1438,
+        "height": 755
+      },
+      "started_at": "2017-09-17T09:53:52.391Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-09-17T09:54:18.158Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 471,
+          "clientHeight": 679,
+          "naturalWidth": 4026,
+          "naturalHeight": 5807
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/70836563",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "12992657"
+      ]
+    }
+  },
+  {
+    "id": "70836589",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 672.6695556640625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1308.706298828125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1953.701171875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2598.6962890625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 3234.73291015625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-09-17T09:54:53.963Z",
+    "updated_at": "2017-09-17T09:54:54.034Z",
+    "metadata": {
+      "session": "71547ccb5c40af4210b99c73d8252153d66071c7917b663efa2ebaf7407e291b",
+      "viewport": {
+        "width": 1438,
+        "height": 755
+      },
+      "started_at": "2017-09-17T09:54:36.586Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36",
+      "utc_offset": "-7200",
+      "finished_at": "2017-09-17T09:54:53.503Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 438,
+          "clientHeight": 679,
+          "naturalWidth": 3920,
+          "naturalHeight": 6087
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/70836589",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "12993844"
+      ]
+    }
+  },
+  {
+    "id": "79372722",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 820.1737670898438,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 1452.765380859375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2119.245849609375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 2751.83740234375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          },
+          {
+            "x": 3407.021484375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-11-21T20:13:06.518Z",
+    "updated_at": "2017-11-21T20:13:06.613Z",
+    "metadata": {
+      "session": "b5ebbe3aedc77086e28fa1644b156a50bee7c2d9ca6d6122e2875024ebdcc523",
+      "viewport": {
+        "width": 1142,
+        "height": 596
+      },
+      "started_at": "2017-11-21T20:12:03.432Z",
+      "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.75 Safari/537.36",
+      "utc_offset": "21600",
+      "finished_at": "2017-11-21T20:13:06.350Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 364,
+          "clientHeight": 536,
+          "naturalWidth": 4105,
+          "naturalHeight": 6056
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/79372722",
+    "links": {
+      "project": "3370",
+      "user": "1532117",
+      "workflow": "3548",
+      "subjects": [
+        "12996372"
+      ]
+    }
+  },
+  {
+    "id": "79644143",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 1
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 1994.40673828125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-11-24T11:52:51.464Z",
+    "updated_at": "2017-11-24T11:52:51.503Z",
+    "metadata": {
+      "session": "a22a68c6c22a1298e62cec191136f5e20463666a66f664a33e237d2b1780d378",
+      "viewport": {
+        "width": 1436,
+        "height": 736
+      },
+      "started_at": "2017-11-24T11:52:44.345Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0",
+      "utc_offset": "-3600",
+      "finished_at": "2017-11-24T11:52:51.154Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 444,
+          "clientHeight": 662,
+          "naturalWidth": 4128,
+          "naturalHeight": 6153
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/79644143",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "14813280"
+      ]
+    }
+  },
+  {
+    "id": "79644150",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 1
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2053.15673828125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-11-24T11:52:58.888Z",
+    "updated_at": "2017-11-24T11:52:58.937Z",
+    "metadata": {
+      "session": "a22a68c6c22a1298e62cec191136f5e20463666a66f664a33e237d2b1780d378",
+      "viewport": {
+        "width": 1436,
+        "height": 736
+      },
+      "started_at": "2017-11-24T11:52:51.986Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0",
+      "utc_offset": "-3600",
+      "finished_at": "2017-11-24T11:52:58.474Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 440,
+          "clientHeight": 662,
+          "naturalWidth": 4060,
+          "naturalHeight": 6115
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/79644150",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "14813279"
+      ]
+    }
+  },
+  {
+    "id": "79644163",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 1
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2043.9249267578125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-11-24T11:53:19.668Z",
+    "updated_at": "2017-11-24T11:53:19.709Z",
+    "metadata": {
+      "session": "a22a68c6c22a1298e62cec191136f5e20463666a66f664a33e237d2b1780d378",
+      "viewport": {
+        "width": 1436,
+        "height": 736
+      },
+      "started_at": "2017-11-24T11:53:13.263Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0",
+      "utc_offset": "-3600",
+      "finished_at": "2017-11-24T11:53:19.271Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 440,
+          "clientHeight": 662,
+          "naturalWidth": 4060,
+          "naturalHeight": 6115
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/79644163",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "14813279"
+      ]
+    }
+  },
+  {
+    "id": "79644132",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 1
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2031.564453125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-11-24T11:52:30.210Z",
+    "updated_at": "2017-11-24T11:52:30.267Z",
+    "metadata": {
+      "session": "a22a68c6c22a1298e62cec191136f5e20463666a66f664a33e237d2b1780d378",
+      "viewport": {
+        "width": 1436,
+        "height": 736
+      },
+      "started_at": "2017-11-24T11:52:20.409Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0",
+      "utc_offset": "-3600",
+      "finished_at": "2017-11-24T11:52:29.793Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 444,
+          "clientHeight": 662,
+          "naturalWidth": 4128,
+          "naturalHeight": 6153
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/79644132",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "14813280"
+      ]
+    }
+  },
+  {
+    "id": "79644168",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 1
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2003.6962890625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-11-24T11:53:27.728Z",
+    "updated_at": "2017-11-24T11:53:27.785Z",
+    "metadata": {
+      "session": "a22a68c6c22a1298e62cec191136f5e20463666a66f664a33e237d2b1780d378",
+      "viewport": {
+        "width": 1436,
+        "height": 736
+      },
+      "started_at": "2017-11-24T11:53:20.048Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0",
+      "utc_offset": "-3600",
+      "finished_at": "2017-11-24T11:53:27.411Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 444,
+          "clientHeight": 662,
+          "naturalWidth": 4128,
+          "naturalHeight": 6153
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/79644168",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "14813280"
+      ]
+    }
+  },
+  {
+    "id": "79644108",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 1
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2053.390625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-11-24T11:52:06.208Z",
+    "updated_at": "2017-11-24T11:52:06.254Z",
+    "metadata": {
+      "session": "a22a68c6c22a1298e62cec191136f5e20463666a66f664a33e237d2b1780d378",
+      "viewport": {
+        "width": 1436,
+        "height": 736
+      },
+      "started_at": "2017-11-24T11:51:16.990Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0",
+      "utc_offset": "-3600",
+      "finished_at": "2017-11-24T11:52:05.893Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 442,
+          "clientHeight": 662,
+          "naturalWidth": 4105,
+          "naturalHeight": 6157
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/79644108",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "14813281"
+      ]
+    }
+  },
+  {
+    "id": "79644138",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 1
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2047.852294921875,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-11-24T11:52:43.286Z",
+    "updated_at": "2017-11-24T11:52:43.367Z",
+    "metadata": {
+      "session": "a22a68c6c22a1298e62cec191136f5e20463666a66f664a33e237d2b1780d378",
+      "viewport": {
+        "width": 1436,
+        "height": 736
+      },
+      "started_at": "2017-11-24T11:52:37.673Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0",
+      "utc_offset": "-3600",
+      "finished_at": "2017-11-24T11:52:42.974Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 442,
+          "clientHeight": 662,
+          "naturalWidth": 4105,
+          "naturalHeight": 6157
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/79644138",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "14813281"
+      ]
+    }
+  },
+  {
+    "id": "79644135",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 1
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2062.38916015625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-11-24T11:52:37.115Z",
+    "updated_at": "2017-11-24T11:52:37.158Z",
+    "metadata": {
+      "session": "a22a68c6c22a1298e62cec191136f5e20463666a66f664a33e237d2b1780d378",
+      "viewport": {
+        "width": 1436,
+        "height": 736
+      },
+      "started_at": "2017-11-24T11:52:30.787Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0",
+      "utc_offset": "-3600",
+      "finished_at": "2017-11-24T11:52:36.759Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 440,
+          "clientHeight": 662,
+          "naturalWidth": 4060,
+          "naturalHeight": 6115
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/79644135",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "14813279"
+      ]
+    }
+  },
+  {
+    "id": "79644157",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 1
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2012.985595703125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-11-24T11:53:07.238Z",
+    "updated_at": "2017-11-24T11:53:07.289Z",
+    "metadata": {
+      "session": "a22a68c6c22a1298e62cec191136f5e20463666a66f664a33e237d2b1780d378",
+      "viewport": {
+        "width": 1436,
+        "height": 736
+      },
+      "started_at": "2017-11-24T11:52:59.220Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0",
+      "utc_offset": "-3600",
+      "finished_at": "2017-11-24T11:53:06.927Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 444,
+          "clientHeight": 662,
+          "naturalWidth": 4128,
+          "naturalHeight": 6153
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/79644157",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "14813280"
+      ]
+    }
+  },
+  {
+    "id": "79644123",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 1
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2062.38916015625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-11-24T11:52:18.399Z",
+    "updated_at": "2017-11-24T11:52:18.445Z",
+    "metadata": {
+      "session": "a22a68c6c22a1298e62cec191136f5e20463666a66f664a33e237d2b1780d378",
+      "viewport": {
+        "width": 1436,
+        "height": 736
+      },
+      "started_at": "2017-11-24T11:52:07.288Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0",
+      "utc_offset": "-3600",
+      "finished_at": "2017-11-24T11:52:18.073Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 440,
+          "clientHeight": 662,
+          "naturalWidth": 4060,
+          "naturalHeight": 6115
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/79644123",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "14813279"
+      ]
+    }
+  },
+  {
+    "id": "79644159",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 1
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2057.1474609375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2017-11-24T11:53:13.009Z",
+    "updated_at": "2017-11-24T11:53:13.049Z",
+    "metadata": {
+      "session": "a22a68c6c22a1298e62cec191136f5e20463666a66f664a33e237d2b1780d378",
+      "viewport": {
+        "width": 1436,
+        "height": 736
+      },
+      "started_at": "2017-11-24T11:53:07.616Z",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.13; rv:57.0) Gecko/20100101 Firefox/57.0",
+      "utc_offset": "-3600",
+      "finished_at": "2017-11-24T11:53:12.684Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 442,
+          "clientHeight": 662,
+          "naturalWidth": 4105,
+          "naturalHeight": 6157
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/79644159",
+    "links": {
+      "project": "3370",
+      "user": "1593197",
+      "workflow": "3548",
+      "subjects": [
+        "14813281"
+      ]
+    }
+  },
+  {
+    "id": "86331021",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 1
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2054.90869140625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2018-01-17T03:35:00.735Z",
+    "updated_at": "2018-01-17T03:35:00.866Z",
+    "metadata": {
+      "session": "595bf30dc4a489a4b12a992f7214be5e6a4bf3d0eec1799fb3259b147d496d9a",
+      "viewport": {
+        "width": 1855,
+        "height": 957
+      },
+      "started_at": "2018-01-17T03:34:23.255Z",
+      "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0",
+      "utc_offset": "28800",
+      "finished_at": "2018-01-17T03:35:00.403Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 572,
+          "clientHeight": 861,
+          "naturalWidth": 4060,
+          "naturalHeight": 6115
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/86331021",
+    "links": {
+      "project": "3370",
+      "user": "1532117",
+      "workflow": "3548",
+      "subjects": [
+        "14813279"
+      ]
+    }
+  },
+  {
+    "id": "86331042",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 1
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2010.420166015625,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2018-01-17T03:35:15.207Z",
+    "updated_at": "2018-01-17T03:35:15.283Z",
+    "metadata": {
+      "session": "595bf30dc4a489a4b12a992f7214be5e6a4bf3d0eec1799fb3259b147d496d9a",
+      "viewport": {
+        "width": 1855,
+        "height": 957
+      },
+      "started_at": "2018-01-17T03:35:05.425Z",
+      "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0",
+      "utc_offset": "28800",
+      "finished_at": "2018-01-17T03:35:14.916Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 578,
+          "clientHeight": 861,
+          "naturalWidth": 4128,
+          "naturalHeight": 6153
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/86331042",
+    "links": {
+      "project": "3370",
+      "user": "1532117",
+      "workflow": "3548",
+      "subjects": [
+        "14813280"
+      ]
+    }
+  },
+  {
+    "id": "86331059",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 1
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2048.92578125,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2018-01-17T03:35:26.944Z",
+    "updated_at": "2018-01-17T03:35:26.993Z",
+    "metadata": {
+      "session": "595bf30dc4a489a4b12a992f7214be5e6a4bf3d0eec1799fb3259b147d496d9a",
+      "viewport": {
+        "width": 1855,
+        "height": 957
+      },
+      "started_at": "2018-01-17T03:35:16.372Z",
+      "user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0",
+      "utc_offset": "28800",
+      "finished_at": "2018-01-17T03:35:26.661Z",
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 574,
+          "clientHeight": 861,
+          "naturalWidth": 4105,
+          "naturalHeight": 6157
+        }
+      ],
+      "workflow_version": "19.16"
+    },
+    "href": "/classifications/86331059",
+    "links": {
+      "project": "3370",
+      "user": "1532117",
+      "workflow": "3548",
+      "subjects": [
+        "14813281"
+      ]
+    }
+  },
+  {
+    "id": "86599493",
+    "annotations": [
+      {
+        "task": "T0",
+        "value": 0
+      },
+      {
+        "task": "T1",
+        "value": [
+          {
+            "x": 2037.1732177734375,
+            "tool": 0,
+            "frame": 0,
+            "details": []
+          }
+        ]
+      }
+    ],
+    "created_at": "2018-01-18T23:59:45.385Z",
+    "updated_at": "2018-01-18T23:59:45.843Z",
+    "metadata": {
+      "session": "986a6a9f952b8b8eabddcb1ace78407a467b57f8ce62e397a12eae9e1fde899a",
+      "viewport": {
+        "width": 1686,
+        "height": 877
+      },
+      "started_at": "2018-01-18T23:59:36.238Z",
+      "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+      "utc_offset": "28800",
+      "finished_at": "2018-01-18T23:59:45.142Z",
+      "seen_before": true,
+      "live_project": false,
+      "user_language": "en",
+      "user_group_ids": [],
+      "subject_dimensions": [
+        {
+          "clientWidth": 525,
+          "clientHeight": 789,
+          "naturalWidth": 4060,
+          "naturalHeight": 6115
+        }
+      ],
+      "workflow_version": "19.20"
+    },
+    "href": "/classifications/86599493",
+    "links": {
+      "project": "3370",
+      "user": "1532117",
+      "workflow": "3548",
+      "subjects": [
+        "14813279"
+      ]
+    }
+  }
+]

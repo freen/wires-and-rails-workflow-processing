@@ -1,9 +1,14 @@
 .env
+
 *.pyc
 .pynative/*
-*.log
+.cache/*
+
 .DS_Store
+*.log
 dump.rdb
+
 supervisord.pid
+
 bin/convert-tiffs-to-pngs.sh
 etc/wires-and-rails-subjects.csv

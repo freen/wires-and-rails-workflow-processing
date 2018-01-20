@@ -4,12 +4,12 @@ import os.path
 import re
 
 """
-Model class for performing subject operations.
+Model class for accessing subject data.
 """
 
 class Subject(dict):
     """
-    Model class for performing subject operations.
+    Model class for accessing subject data.
     """
 
     BOOK_AND_PAGE_PATTERN = r'^(?P<book>[\d\-]+)\s.+\s(?P<page>\d+)(\.bin)?$'

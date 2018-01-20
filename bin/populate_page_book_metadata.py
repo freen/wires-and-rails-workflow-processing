@@ -14,8 +14,6 @@ from lib import settings
 from lib.models.subject import Subject as SubjectModel
 from lib.subject_set_csv import SubjectSetCSV
 
-Panoptes.connect(username=settings.PANOPTES_USERNAME, password=settings.PANOPTES_PASSWORD)
-
 class SubjectHydrator:
 
     BOOK_AND_PAGE_FIELDS = ['book', 'page']
@@ -82,6 +80,7 @@ class SubjectHydrator:
         SubjectHydrator._log_result(skipped, filtered_subject_set_id, no_filename_ids)
 
 if __name__ == '__main__':
+    Panoptes.connect(username=settings.PANOPTES_USERNAME, password=settings.PANOPTES_PASSWORD)
     subject_set_csv = SubjectSetCSV()
     subject_hydrater = SubjectHydrator(subject_set_csv.csv_reader)
     subject_hydrater.run()
