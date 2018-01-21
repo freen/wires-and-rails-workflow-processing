@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
-pylint -f colorized *.py **/*.py
-RC=$?
-
-if [[ "$RC" != "0" ]]; then
-  echo "(pylint failed. [code $RC])"
-  exit $RC
-fi
-
 python3 -m pytest
 RC=$?
 
 if [[ "$RC" != "0" ]]; then
   echo "(pytest failed. [code $RC])"
+  exit $RC
+fi
+
+pylint -f colorized run.py lib/*.py tests/*.py
+RC=$?
+
+if [[ "$RC" != "0" ]]; then
+  echo "(pylint failed. [code $RC])"
   exit $RC
 fi

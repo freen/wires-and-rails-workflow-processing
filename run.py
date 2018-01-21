@@ -6,7 +6,6 @@ Runner script. Define .env variables per .env.example and run e.g.
    python3 run.py
 """
 
-import csv
 import logging
 
 from lib import settings
@@ -32,7 +31,7 @@ def run(log_level):
     retired_subject_ids = []
     vertex_centroids_by_subject = {}
 
-    for subject_set_id, metadata in settings.COLUMNS_WORKFLOW_METADATA.items():
+    for _subject_set_id, metadata in settings.COLUMNS_WORKFLOW_METADATA.items():
 
         logger.debug("Loading vertices / subject retirement info for %(debug_name)s subject set " \
             "(subject set id: %(subject_set_id)d; workflow id: %(workflow_id)d; task id: " \
