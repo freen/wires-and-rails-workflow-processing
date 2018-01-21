@@ -2,8 +2,10 @@
 Answers questions about a set of vertex classifications.
 """
 
-from collections import defaultdict
 from .classifications import Classifications
+from collections import defaultdict
+from numpy import array, median, std
+from scipy.cluster.vq import kmeans, whiten
 
 class VertexClassifications(Classifications):
 
@@ -33,5 +35,18 @@ class VertexClassifications(Classifications):
             vertex_set_annotations[subject_id] = normalized_sets
         return vertex_set_annotations
 
-    def kmeans_centroids_by_subject(self):
-        pass
+    def kmeans_centroids_by_subject(self, vertex_set_annotations):
+        centroids = {}
+        for subject_id, vertex_sets in vertex_set_annotations.items():
+            if len(vertex_sets) < 2:
+                continue
+            features = array(vertex_sets)
+            std_dev = std(features, axis=0)
+            whitened = whiten(features)
+            kmeans_codebook, _distortion = kmeans(whitened, 1)
+            [dewhitened_kmeans] = kmeans_codebook * std_dev
+            if self._logger is not None:
+                self._logger.debug('For subject %d, cluster centroids: %s', subject_id,
+                                   str(dewhitened_kmeans))
+            centroids[subject_id] = dewhitened_kmeans
+        return centroids
