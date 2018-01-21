@@ -9,9 +9,7 @@ class TestVertexClassifications(object):
         return VertexClassifications(panoptes_classification_models, pages_raw_subject_ids)
 
     def test_kmeans_centroids_calculation_is_correct(self, vertex_classifications_model):
-        vertex_set_annotations = vertex_classifications_model.collect_vertex_set_annotations('T1')
-        vertex_set_annotations = vertex_classifications_model.normalize_vertex_set_annotations(vertex_set_annotations)
-        kmeans_centroids = vertex_classifications_model.kmeans_centroids_by_subject(vertex_set_annotations)
+        kmeans_centroids = vertex_classifications_model.vertex_centroids('T1')
 
         expected_kmeans_centroids = {
             5823821: array([1663.09427897]),

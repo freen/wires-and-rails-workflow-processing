@@ -38,7 +38,7 @@ class SubjectSetCSV:
         Returns a set of subject ids of all raw pages, both Telegraph and Railroad.
         """
         if self._raw_pages_subject_ids is None:
-            ids = [row['subject_id'] for row in self.csv_reader \
+            ids = [int(row['subject_id']) for row in self.csv_reader \
                 if int(row['subject_set_id']) in settings.SUBJECT_SET_IDS_PAGES_RAW]
             self._raw_pages_subject_ids = set(ids)
         return self._raw_pages_subject_ids

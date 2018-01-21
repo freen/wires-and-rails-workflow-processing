@@ -6,11 +6,17 @@ from collections import defaultdict
 
 class Classifications:
 
-    def __init__(self, classifications, subject_id_whitelist, logger=None):
-        self._logger = logger
-        # self._logger = logging.getLogger(settings.APP_NAME)
+    def __init__(self, classifications, subject_id_whitelist):
         self._annotations = self._annotations_by_task_and_subject(classifications,
                                                                   subject_id_whitelist)
+
+    def retired_subject_ids(self, task_id, retirement_count):
+        """
+        Derive this value (not available in the API) by comparing classification counts to the
+        configured subject retirement classification count.
+        """
+        return [id for id in self._annotations[task_id]
+                if len(self._annotations[task_id][id]) >= retirement_count]
 
     def _annotations_by_task_and_subject(self, classifications, subject_id_whitelist):
         """
@@ -26,10 +32,6 @@ class Classifications:
                     continue
                 annotations = self._add_annotations(annotations, classification, subject_id)
         unique_skipped_subject_ids = set(skipped_subject_ids)
-        if self._logger is not None:
-            self._logger.debug("Skipped classifications recorded for %d subject IDs outside " \
-                "pages_raw: %s", len(unique_skipped_subject_ids),
-                ', '.join(unique_skipped_subject_ids))
         return annotations
 
     def _add_annotations(self, annotations, classification, subject_id):

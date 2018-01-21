@@ -12,9 +12,10 @@ import logging
 from lib import settings
 from lib.logger import setup_logger
 from lib.queue_operations import QueueOperations
-from lib.kmeans_cluster_annotated_column_vertices import KmeansClusterAnnotatedColumnVertices
+from lib.models.vertex_classifications import VertexClassifications
+from lib.subject_set_csv import SubjectSetCSV
 
-from panoptes_client import Panoptes, Subject
+from panoptes_client import Classification, Panoptes, Subject, Workflow
 from redis import Redis
 from rq import Queue
 
@@ -37,16 +38,27 @@ def run(log_level):
             "(subject set id: %(subject_set_id)d; workflow id: %(workflow_id)d; task id: " \
             " %(task_id)s", metadata)
 
-        clusterer = KmeansClusterAnnotatedColumnVertices({
+        classification_kwargs = {
+            'scope': 'project',
             'project_id': settings.PROJECT_ID,
-            'workflow_id': metadata['workflow_id'],
-            'subject_set_id': subject_set_id,
-            'task_id': metadata['task_id']
-        })
+            'workflow_id': metadata['workflow_id']
+        }
+        logger.debug("Loading classifications by params %s", str(classification_kwargs))
+        classifications_records = Classification.where(**classification_kwargs)
 
-        # Calculate vertex centroids
-        vertex_centroids_by_subject.update(clusterer.calculate_vertex_centroids())
-        retired_subject_ids += clusterer.retired_subject_ids()
+        subject_set_csv = SubjectSetCSV()
+        pages_raw_subject_ids = subject_set_csv.raw_pages_subject_ids()
+        classifications = VertexClassifications(classifications_records, pages_raw_subject_ids)
+
+        # Aggregate vertex centroids
+        centroids_by_subject = classifications.vertex_centroids(metadata['task_id'])
+        vertex_centroids_by_subject.update(centroids_by_subject)
+
+        # Aggregate retired subjects
+        workflow = Workflow.find(metadata['workflow_id'])
+        retirement_count = workflow.retirement['options']['count']
+        retired_subject_ids += classifications.retired_subject_ids(metadata['task_id'],
+                                                                   retirement_count)
 
     logger.debug('Retrieved the following subject centroids for image segmentation: %s',
                  str(vertex_centroids_by_subject))

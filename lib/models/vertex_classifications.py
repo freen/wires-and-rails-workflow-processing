@@ -9,7 +9,12 @@ from scipy.cluster.vq import kmeans, whiten
 
 class VertexClassifications(Classifications):
 
-    def collect_vertex_set_annotations(self, task_id):
+    def vertex_centroids(self, task_id):
+        vertex_set_annotations = self._collect_vertex_set_annotations(task_id)
+        vertex_set_annotations = self._normalize_vertex_set_annotations(vertex_set_annotations)
+        return self._kmeans_centroids_by_subject(vertex_set_annotations)
+
+    def _collect_vertex_set_annotations(self, task_id):
         vertex_set_annotations = defaultdict(list)
         if task_id not in self._annotations:
             return vertex_set_annotations
@@ -18,9 +23,11 @@ class VertexClassifications(Classifications):
                 vertex_set = [vertex['x'] for vertex in vertex_annotation['value']]
                 vertex_set.sort()
                 vertex_set_annotations[subject_id].append(vertex_set)
+
+        # import pdb; pdb.set_trace();
         return vertex_set_annotations
 
-    def normalize_vertex_set_annotations(self, vertex_set_annotations):
+    def _normalize_vertex_set_annotations(self, vertex_set_annotations):
         """
         Strip out line sets which include vertex qties deviant from the median vertex qty for that
         subject. This works in our case because the quantity of vertexs on a subject is extremely
@@ -35,7 +42,7 @@ class VertexClassifications(Classifications):
             vertex_set_annotations[subject_id] = normalized_sets
         return vertex_set_annotations
 
-    def kmeans_centroids_by_subject(self, vertex_set_annotations):
+    def _kmeans_centroids_by_subject(self, vertex_set_annotations):
         centroids = {}
         for subject_id, vertex_sets in vertex_set_annotations.items():
             if len(vertex_sets) < 2:
@@ -45,8 +52,5 @@ class VertexClassifications(Classifications):
             whitened = whiten(features)
             kmeans_codebook, _distortion = kmeans(whitened, 1)
             [dewhitened_kmeans] = kmeans_codebook * std_dev
-            if self._logger is not None:
-                self._logger.debug('For subject %d, cluster centroids: %s', subject_id,
-                                   str(dewhitened_kmeans))
             centroids[subject_id] = dewhitened_kmeans
         return centroids
