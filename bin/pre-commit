@@ -8,7 +8,7 @@ if [[ "$RC" != "0" ]]; then
   exit $RC
 fi
 
-pylint -f colorized run.py lib/*.py tests/*.py
+pylint -f colorized run.py lib/**/*.py tests/*.py
 RC=$?
 
 if [[ "$RC" != "0" ]]; then

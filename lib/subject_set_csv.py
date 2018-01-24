@@ -11,7 +11,7 @@ For more info, see discussion here: https://github.com/zooniverse/panoptes-pytho
 
 import csv
 import os.path
-
+from collections import defaultdict
 from lib import settings
 
 class SubjectSetCSV:
@@ -48,8 +48,8 @@ class SubjectSetCSV:
         Returns the subject set ID which corresponds to a subject which is only in one subject
         set, namely any raw page subject.
         """
-        for subject_set_id, subject_ids in self.subject_ids_by_subject_set_id().items():
-            if int(subject_id) in subject_ids:
+        for subject_set_id, subject_set_children in self.subject_ids_by_subject_set_id().items():
+            if int(subject_id) in subject_set_children:
                 return subject_set_id
         return False
 
@@ -58,10 +58,8 @@ class SubjectSetCSV:
         2D array grouping subject IDs into their respective subject set IDs.
         """
         if self._subject_ids_by_subject_set_id is None:
-            self._subject_ids_by_subject_set_id = {}
+            self._subject_ids_by_subject_set_id = defaultdict(set)
             for row in self.csv_reader:
                 set_id = int(row['subject_set_id'])
-                if set_id not in self._subject_ids_by_subject_set_id:
-                    self._subject_ids_by_subject_set_id[set_id] = set()
                 self._subject_ids_by_subject_set_id[set_id].add(int(row['subject_id']))
         return self._subject_ids_by_subject_set_id

@@ -11,7 +11,6 @@ from panoptes_client import Project, Subject, SubjectSet
 from . import settings
 from .logger import setup_logger
 from .ocropy import Ocropy
-from .subject_set_csv import SubjectSetCSV
 
 class QueueOperations:
     """
@@ -25,7 +24,7 @@ class QueueOperations:
         self._logger = logger
 
     @classmethod
-    def queue_new_subject_creation(cls, subject_id, vertex_centroids):
+    def queue_new_subject_creation(cls, subject_id, vertex_centroids, target_subject_set_id):
         """
         Given subject ID and vertex centroids, fetch subject image and perform segmentation.
         Static-w/-instance-of-self pattern to support enqueuing in RQ.
@@ -42,7 +41,7 @@ class QueueOperations:
         for column_image_path in column_image_paths:
             queue_ops.upscale_small_images(column_image_path)
         row_paths_by_column = queue_ops.perform_row_segmentation(column_image_paths)
-        queue_ops.push_new_row_subjects(subject, row_paths_by_column)
+        queue_ops.push_new_row_subjects(subject, target_subject_set_id, row_paths_by_column)
 
     @classmethod
     def flag_subject_as_queued(cls, subject):
@@ -74,31 +73,13 @@ class QueueOperations:
         resized.save(image_path)
         return True
 
-    def push_new_row_subjects(self, source_subject, row_paths_by_column):
+    def push_new_row_subjects(self, source_subject, target_subject_set_id, row_paths_by_column):
         """
         Given image paths for the new column-indexed rows (row_paths_by_column), push new
         unclassified row subjects to the appropriate subject set, with metadata references to the
         source subject and column.
         """
         project = Project.find(settings.PROJECT_ID)
-        # subject = Subject.find(source_subject.id)
-
-        subject_set_csv = SubjectSetCSV()
-        subject_set_id = subject_set_csv.get_subject_set_id(source_subject.id)
-
-        self._logger.info('Identified parent subject set of subject id %s as %s', source_subject.id,
-                          subject_set_id)
-
-        if subject_set_id == settings.SUBJECT_SET_ID_PAGES_RAW_RAILROAD:
-            target_subject_set_id = settings.SUBJECT_SET_ID_PAGES_ROWS_UNCLASSIFIED_RAILROAD
-            log_set_name = 'Railroad'
-        elif subject_set_id == settings.SUBJECT_SET_ID_PAGES_RAW_TELEGRAPH:
-            target_subject_set_id = settings.SUBJECT_SET_ID_PAGES_ROWS_UNCLASSIFIED_TELEGRAPH
-            log_set_name = 'Telegraph'
-        else:
-            raise RuntimeError('Invalid source subject set ID, no target: %s' % source_subject.id)
-
-        self._logger.info('Identified source subject as %s subject.', log_set_name)
 
         subject_set_unclassified_rows = SubjectSet.find(target_subject_set_id)
 

@@ -2,7 +2,7 @@
 Answers questions about a set of classifications.
 """
 
-from collections import defaultdict
+from collections import defaultdict, Counter
 
 class Classifications:
 
@@ -10,12 +10,19 @@ class Classifications:
         self._annotations = self._annotations_by_task_and_subject(classifications,
                                                                   subject_id_whitelist)
 
+    def majority_element(self, task_id, subject_id):
+        counter = Counter(self._annotations[task_id][subject_id])
+        if len(counter.most_common(2)) > 1:
+            raise ValueError('Multiple majority elements')
+        most_common = counter.most_common(1)
+        return most_common[0]
+
     def retired_subject_ids(self, task_id, retirement_count):
         """
         Derive this value (not available in the API) by comparing classification counts to the
         configured subject retirement classification count.
         """
-        return [id for id in self._annotations[task_id]
+        return [int(id) for id in self._annotations[task_id]
                 if len(self._annotations[task_id][id]) >= retirement_count]
 
     def _annotations_by_task_and_subject(self, classifications, subject_id_whitelist):
@@ -39,5 +46,5 @@ class Classifications:
             task_id = annotation['task']
             if subject_id not in annotations[task_id]:
                 annotations[task_id][subject_id] = []
-            annotations[task_id][subject_id].append(annotation)
+            annotations[task_id][subject_id].append(annotation['value'])
         return annotations

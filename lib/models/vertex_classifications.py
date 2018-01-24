@@ -20,11 +20,9 @@ class VertexClassifications(Classifications):
             return vertex_set_annotations
         for subject_id, vertex_annotations in self._annotations[task_id].items():
             for vertex_annotation in vertex_annotations:
-                vertex_set = [vertex['x'] for vertex in vertex_annotation['value']]
+                vertex_set = [vertex['x'] for vertex in vertex_annotation]
                 vertex_set.sort()
                 vertex_set_annotations[subject_id].append(vertex_set)
-
-        # import pdb; pdb.set_trace();
         return vertex_set_annotations
 
     def _normalize_vertex_set_annotations(self, vertex_set_annotations):
@@ -38,7 +36,7 @@ class VertexClassifications(Classifications):
         for subject_id, vertex_sets in vertex_set_annotations.items():
             median_vertex_qty = round(median([len(vertex_set) for vertex_set in vertex_sets]))
             normalized_sets = [vertex_set for vertex_set in vertex_set_annotations[subject_id]
-                              if len(vertex_set) == median_vertex_qty]
+                               if len(vertex_set) == median_vertex_qty]
             vertex_set_annotations[subject_id] = normalized_sets
         return vertex_set_annotations
 
