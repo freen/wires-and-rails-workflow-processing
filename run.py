@@ -27,8 +27,8 @@ class UnidentifiedRawSubjectSetException(Exception):
 
 def _target_railroad_subject_set_id(source_subject_id, classifications_records):
     classifications = Classifications(classifications_records, PAGES_RAW_SUBJECT_IDS)
-    majority_element, _qty = classifications.majority_element(settings.TASK_ID_RAILROAD_LIST_TYPE,
-                                                              source_subject_id)
+    majority_element = classifications.majority_element(settings.TASK_ID_RAILROAD_LIST_TYPE,
+                                                        source_subject_id)
     if majority_element == settings.VALUE_RAILROAD_PAGE_LIST_TYPE_STATION:
         target_subject_set_id = settings.SUBJECT_SET_ID_PAGES_ROWS_RAILROAD_STATION_LIST
         target_name = 'Station'
@@ -78,7 +78,7 @@ def run():
             'workflow_id': metadata['workflow_id']
         }
         LOGGER.debug("Loading classifications by params %s", str(classification_kwargs))
-        classifications_records = Classification.where(**classification_kwargs)
+        classifications_records = [c for c in Classification.where(**classification_kwargs)]
 
         classifications = VertexClassifications(classifications_records, PAGES_RAW_SUBJECT_IDS)
 
