@@ -39,7 +39,7 @@ def _target_railroad_subject_set_id(source_subject_id, classifications_records):
     else:
         raise RuntimeError('Unknown scenario, majority element for rail pg type: %s'
                            % majority_element)
-    LOGGER.debug('With a majority element of %d for task %s, target subject set for subject ID' \
+    LOGGER.debug('With a majority element of %d for task %s, target subject set for subject ID ' \
                  '%d is %s', majority_element, settings.TASK_ID_RAILROAD_LIST_TYPE,
                  source_subject_id, target_name)
     return target_subject_set_id
