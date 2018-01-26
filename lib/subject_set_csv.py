@@ -27,17 +27,22 @@ class SubjectSetCSV:
         csv_filepath = settings.CACHE_FILE_SUBJECT_SET_CSV_FILEPATH
         if not os.path.isfile(csv_filepath):
             raise RuntimeError("Subject set CSV absent: %s" % csv_filepath)
-        csv_file = open(csv_filepath, newline='')
-        self.csv_reader = csv.DictReader(csv_file)
+        self._csv_file = open(csv_filepath, newline='')
+        self.csv_reader = csv.DictReader(self._csv_file)
 
         self._raw_pages_subject_ids = None
         self._subject_ids_by_subject_set_id = None
+
+    def _reset_csv_reader(self):
+        self._csv_file.seek(0)
+        next(self.csv_reader)
 
     def raw_pages_subject_ids(self):
         """
         Returns a set of subject ids of all raw pages, both Telegraph and Railroad.
         """
         if self._raw_pages_subject_ids is None:
+            self._reset_csv_reader()
             ids = [int(row['subject_id']) for row in self.csv_reader \
                 if int(row['subject_set_id']) in settings.SUBJECT_SET_IDS_PAGES_RAW]
             self._raw_pages_subject_ids = set(ids)
@@ -58,6 +63,7 @@ class SubjectSetCSV:
         2D array grouping subject IDs into their respective subject set IDs.
         """
         if self._subject_ids_by_subject_set_id is None:
+            self._reset_csv_reader()
             self._subject_ids_by_subject_set_id = defaultdict(set)
             for row in self.csv_reader:
                 set_id = int(row['subject_set_id'])
