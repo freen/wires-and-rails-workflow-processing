@@ -9,7 +9,8 @@ import logging
 from lib import settings
 from lib.logger import setup_logger
 from lib.queue_operations import QueueOperations
-from lib.models.vertex_classifications import Classifications, VertexClassifications
+from lib.models.classifications import Classifications, SharedMajorityException
+from lib.models.vertex_classifications import VertexClassifications
 from lib.subject_set_csv import SubjectSetCSV
 
 from panoptes_client import Classification, Panoptes, Subject, Workflow
@@ -88,7 +89,11 @@ def run():
             try:
                 target_subject_set_id = _target_subject_set_id(subject_id, classifications_records)
             except UnidentifiedRawSubjectSetException as ex:
-                LOGGER.warn(ex.args[0])
+                LOGGER.error(ex.args[0])
+                continue
+            except SharedMajorityException as ex:
+                # TODO need add'l monitoring for this, e.g. manual report exception
+                LOGGER.error(ex.args[0])
                 continue
             vertices_and_target_subject_sets.append([subject_id, centroids, target_subject_set_id])
 

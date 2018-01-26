@@ -1,6 +1,6 @@
 import pytest
 from panoptes_client import Classification
-from lib.models.classifications import Classifications
+from lib.models.classifications import Classifications, SharedMajorityException
 
 class TestClassifications(object):
 
@@ -76,5 +76,5 @@ class TestClassifications(object):
         ]
         classifications_models = [Classification(raw=c) for c in classifications_raw]
         classifications_model = Classifications(classifications_models, [5823821])
-        with pytest.raises(ValueError):
+        with pytest.raises(SharedMajorityException):
             element, qty = classifications_model.majority_element('T0', 5823821)

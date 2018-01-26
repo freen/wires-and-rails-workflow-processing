@@ -2,6 +2,12 @@
 
 from collections import defaultdict, Counter
 
+class SharedMajorityException(Exception):
+    """
+    Raised to indicate that a for the specified task and subject, a single majority cannot be
+    determined because there is a tie.
+    """
+
 class Classifications:
     """Common operations for processing a set of classifications records."""
 
@@ -20,8 +26,10 @@ class Classifications:
         possibly_more_than_one = counter.most_common(2)
         if len(possibly_more_than_one) > 1:
             elements = ', '.join([str(elem[0]) for elem in possibly_more_than_one])
-            raise ValueError('Two or more majority elements for task %s and subject %d: %s' %
-                             (task_id, subject_id, elements))
+            raise SharedMajorityException(
+                'Two or more majority elements for task %s and subject %d: %s' % (task_id, \
+                subject_id, elements)
+            )
         most_common = counter.most_common(1)
         majority_element, _qty = most_common[0]
         return majority_element
