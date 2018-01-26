@@ -17,8 +17,11 @@ class Classifications:
         if not subject_id in self._annotations[task_id]:
             raise KeyError('Task ID %s has no annotations for subject ID %d' % task_id, subject_id)
         counter = Counter(self._annotations[task_id][subject_id])
-        if len(counter.most_common(2)) > 1:
-            raise ValueError('Multiple majority elements')
+        possibly_more_than_one = counter.most_common(2)
+        if len(possibly_more_than_one) > 1:
+            elements = ', '.join([str(elem[0]) for elem in possibly_more_than_one])
+            raise ValueError('Two or more majority elements for task %s and subject %d: %s' %
+                             (task_id, subject_id, elements))
         most_common = counter.most_common(1)
         majority_element, _qty = most_common[0]
         return majority_element
