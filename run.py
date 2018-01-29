@@ -57,6 +57,7 @@ def run():
         # Aggregate vertex centroids
         centroids_by_subject = classifications.vertex_centroids(metadata['task_id'])
         for subject_id, centroids in centroids_by_subject.items():
+            # Find target subject set ID, or log and skip the subject
             try:
                 target_subject_set_id = workflow_router \
                     .target_subject_set_id(subject_id, classifications_records)

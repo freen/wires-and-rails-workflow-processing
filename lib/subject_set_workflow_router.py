@@ -38,6 +38,10 @@ class SubjectSetWorkflowRouter:
         return target_subject_set_id
 
     def target_subject_set_id(self, source_subject_id, classifications_records):
+        """
+        Identify the target subject set for a retired Railroad or Telegraph source subject, given
+        its ID and its classification set.
+        """
         subject_set_id = self._subject_set_csv.get_subject_set_id(source_subject_id)
         if subject_set_id == self._settings.SUBJECT_SET_ID_PAGES_RAW_RAILROAD:
             return self._target_railroad_subject_set_id(source_subject_id, classifications_records)

@@ -4,7 +4,7 @@ from collections import defaultdict, Counter
 
 class SharedMajorityException(Exception):
     """
-    Raised to indicate that a for the specified task and subject, a single majority cannot be
+    Raised to indicate that for the specified task and subject, a single majority cannot be
     determined because there is a tie.
     """
 
@@ -21,7 +21,8 @@ class Classifications:
         the majority is shared by more than one value.
         """
         if not subject_id in self._annotations[task_id]:
-            raise KeyError('Task ID %s has no annotations for subject ID %d' % task_id, subject_id)
+            raise KeyError('Task ID %s has no annotations for subject ID %d' %
+                           (task_id, subject_id))
         counter = Counter(self._annotations[task_id][subject_id])
         possibly_more_than_one = counter.most_common(2)
         if len(possibly_more_than_one) > 1:
