@@ -32,6 +32,7 @@ class SubjectSetCSV:
 
         self._raw_pages_subject_ids = None
         self._subject_ids_by_subject_set_id = None
+        self._subject_set_ids_by_subject_id = None
 
     def _reset_csv_reader(self):
         self._csv_file.seek(0)
@@ -69,3 +70,15 @@ class SubjectSetCSV:
                 set_id = int(row['subject_set_id'])
                 self._subject_ids_by_subject_set_id[set_id].add(int(row['subject_id']))
         return self._subject_ids_by_subject_set_id
+
+    def subject_set_ids_by_subject_id(self):
+        """
+        2D array grouping subject set IDs into by the keys of their member subject IDs.
+        """
+        if self._subject_set_ids_by_subject_id is None:
+            self._reset_csv_reader()
+            self._subject_set_ids_by_subject_id = defaultdict(set)
+            for row in self.csv_reader:
+                subject_id = int(row['subject_id'])
+                self._subject_set_ids_by_subject_id[subject_id].add(int(row['subject_set_id']))
+        return self._subject_set_ids_by_subject_id
