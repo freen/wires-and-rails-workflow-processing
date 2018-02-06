@@ -45,8 +45,9 @@ class SubjectSegmentationStatistics:
         tabular = []
         for subject_set_id, subjects in self._stats.items():
             for subject_id, columns in subjects.items():
-                for column_index, quantity in columns.items():
-                    tabular.append([subject_set_id, subject_id, column_index, quantity])
+                for column_index, segmented_subject_ids in columns.items():
+                    tabular.append([subject_set_id, subject_id, column_index,
+                                   len(segmented_subject_ids)])
 
         table_headers = ['Subject Set ID', 'Subject ID', 'Column Index', 'Quantity']
         print(tabulate(tabular, headers=table_headers))
@@ -68,9 +69,9 @@ class SubjectSegmentationStatistics:
             self._stats[subject_set_id] = defaultdict(dict)
 
         if not column_index in self._stats[subject_set_id][parent_subject_id]:
-            self._stats[subject_set_id][parent_subject_id][column_index] = 0
+            self._stats[subject_set_id][parent_subject_id][column_index] = set()
 
-        self._stats[subject_set_id][parent_subject_id][column_index] += 1
+        self._stats[subject_set_id][parent_subject_id][column_index].add(row['subject_id'])
 
 if __name__ == '__main__':
     CSV = SubjectSetCSV()
