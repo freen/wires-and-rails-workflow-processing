@@ -9,7 +9,8 @@ RUN pip3 install -r /tmp/pip3-requirements.txt
 
 # Ocropy / Python 2
 RUN apt-get update && apt-get -y install wget python-tk
-RUN mkdir -p /app && git clone https://github.com/tmbdev/ocropy.git /app/ocropy
+# RUN mkdir -p /app && git clone https://github.com/tmbdev/ocropy.git /app/ocropy
+RUN mkdir -p /app && git clone -b fix-typeerror-numpy https://github.com/zuphilip/ocropy.git /app/ocropy
 RUN wget -nd http://www.tmbdev.net/en-default.pyrnn.gz && mv en-default.pyrnn.gz /app/ocropy/models/en-default.pyrnn.gz
 WORKDIR /app/ocropy
 RUN python setup.py install && pip install -r requirements.txt
