@@ -1,5 +1,7 @@
 # Wires and Rails: Workflow Post-Processing Tasks
 
+The app currently runs on a `t2.medium` EC2 instance.
+
 ## Pre-commit hook
 
 Enforces `pylint` success on commit.
